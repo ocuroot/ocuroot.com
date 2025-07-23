@@ -1,5 +1,168 @@
 package site
 
+import "github.com/ocuroot/ui/components/section"
+
 templ Index() {
-	@root()
+	@root() {
+		<!-- Hero Section -->
+		<section class="hero-section">
+			<div class="hero-background">
+				<div class="hero-overlay"></div>
+			</div>
+			
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1 class="hero-title">
+						Your Engineers Spend 10-20% of Their Time on Pipelines. Let's Reclaim That!
+					</h1>
+					<p class="hero-subtitle">
+						Studies show engineers spend hundreds of hours yearly on manual deployments, debugging, and pipeline maintenance. We cut the toil so your team can focus on innovation, not infrastructure.
+					</p>
+					<div class="hero-cta">
+						<a href="/demo" class="btn btn-primary">
+							Book a Demo
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr class="section-divider"/>
+
+		<!-- Why Ocuroot Section -->
+		@section.ContentSectionWithImage("Why Ocuroot?", "/static/images/why-ocuroot-cover.jpg", "Person in yellow gloves checking a green plant", "right") {
+			<p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);">
+				During my career, I've seen that deployment complexity invariably increases as organizations get larger. 
+				This complexity slows down delivery with manual rollbacks, cryptic YAML files, and late-night firefighting. 
+				I'm building Ocuroot to be the straightforward CI/CD tool I always wished I had.
+			</p>
+			<p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);">
+				Ocuroot goes beyond the traditional pipeline-as-DAG and makes builds, deployments and environments first-class concepts. Less YAML, more shipping!
+			</p>
+			<a href="/blog" class="feature-link">
+				Read the Full Story
+				<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+				</svg>
+			</a>
+		}
+
+		<hr class="section-divider"/>
+
+		<!-- Features Section -->
+		<section class="features-section">
+			<div class="content-container">
+				<h2 class="section-title">How Ocuroot can help your team</h2>
+				<div class="features-grid">
+					
+					<!-- Release faster -->
+					<div class="feature-card">
+						<div class="feature-icon icon-green">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+							</svg>
+						</div>
+						<h3 class="feature-title">Release faster</h3>
+						<p class="feature-description">
+							Boost developer productivity with tools that help teams iterate quickly. Test pipelines locally, create flexible workflows, and recover from errors with one-click revert - all using a code-based configuration that developers love.
+						</p>
+						<a href="/solutions/productivity-satisfaction" class="feature-link">
+							Learn More
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+					
+					<!-- Simplify audits & compliance -->
+					<div class="feature-card">
+						<div class="feature-icon icon-blue">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+							</svg>
+						</div>
+						<h3 class="feature-title">Simplify audits & compliance</h3>
+						<p class="feature-description">
+							Enhance your security posture with clear guardrails and automated audit trails. Maintain compliance with regulatory requirements while moving at the pace your business demands.
+						</p>
+						<a href="/solutions/security-compliance" class="feature-link">
+							Learn More
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+					
+					<!-- Manage your growing footprint -->
+					<div class="feature-card">
+						<div class="feature-icon icon-purple">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+							</svg>
+						</div>
+						<h3 class="feature-title">Manage your growing footprint</h3>
+						<p class="feature-description">
+							Gain the flexibility to adapt quickly to changing requirements. Visualize what's running where, manage complex deployment workflows, and create environments on-demand.
+						</p>
+						<a href="/solutions/technical-agility" class="feature-link">
+							Learn More
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+					
+					<!-- Reduce cloud spend -->
+					<div class="feature-card">
+						<div class="feature-icon icon-yellow">
+							<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+							</svg>
+						</div>
+						<h3 class="feature-title">Reduce cloud spend</h3>
+						<p class="feature-description">
+							Optimize your resource utilization by only building, testing and deploying when necessary. Control costs without compromising on performance or developer experience.
+						</p>
+						<a href="/solutions/cost-management" class="feature-link">
+							Learn More
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<hr class="section-divider"/>
+
+		<!-- Follow Development Section -->
+		@section.ContentSectionWithImage("Follow Ocuroot's Development", "/static/images/social.png", "Social media and development updates", "left") {
+			<p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);">
+				Ocuroot is being built in the open! I'll be posting regularly with details of new features, tweaks and interesting things I'm learning along the way.
+			</p>
+			<p style="margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);">
+				Follow on your preferred social network for regular updates and to share your own feedback.
+			</p>
+			<div style="display: flex; gap: 1.5rem; margin-top: 2rem;">
+				<a href="https://www.linkedin.com/company/ocuroot/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+					<svg style="width: 1.5rem; height: 1.5rem; margin-right: 0.5rem;" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+					</svg>
+					LinkedIn
+				</a>
+				<a href="https://bsky.app/profile/ocuroot.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium">
+					<svg style="width: 1.5rem; height: 1.5rem; margin-right: 0.5rem;" viewBox="0 0 250 223" fill="currentColor">
+						<path d="M125 98.6116C113.681 76.5977 82.8472 35.5561 54.1667 15.3477C26.7361 -4.0967 16.25 -0.693922 9.375 2.36163C1.45833 5.97274 0 18.195 0 25.3477C0 32.5005 3.95833 84.2366 6.52778 92.8477C15 121.32 45.2083 130.973 72.9861 127.917C74.375 127.709 75.8333 127.501 77.2917 127.362C75.8333 127.57 74.4445 127.778 72.9861 127.917C32.2222 133.959 -3.95834 148.82 43.5417 201.667C95.7639 255.764 115.069 190.07 125 156.806C134.931 190.07 146.389 253.403 205.556 201.667C250 156.806 217.778 133.959 177.014 127.917C175.556 127.778 174.097 127.57 172.708 127.362C174.167 127.57 175.625 127.709 177.014 127.917C204.792 131.042 235 121.389 243.472 92.8477C246.042 84.2366 250 32.57 250 25.3477C250 18.1255 248.542 5.97274 240.625 2.36163C233.75 -0.763366 223.264 -4.0967 195.833 15.2783C167.153 35.4866 136.319 76.5283 125 98.5422V98.6116Z"/>
+					</svg>
+					Bluesky
+				</a>
+			</div>
+		}
+
+		<hr class="section-divider"/>
+	}
 }

@@ -29,8 +29,9 @@ func main() {
 	r.Register("script.js", js.NewService())
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
+	r.Register("static/images/why-ocuroot-cover.jpg", StaticFileComponent("static/images/why-ocuroot-cover.jpg"))
+	r.Register("static/images/social.png", StaticFileComponent("static/images/social.png"))
 	r.Register("index.html", site.Index())
-	r.Register("hello.html", hello("Tom"))
 
 	if *dev {
 		// Run development server
