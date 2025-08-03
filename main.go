@@ -26,6 +26,7 @@ func main() {
 	}
 	r.Register("favicon.ico", StaticComponent(assets.Favicon))
 	r.Register("style.css", css.NewService())
+	r.Register("css/blog.css", StaticFileComponent("static/css/blog.css"))
 	r.Register("script.js", js.NewService())
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
@@ -43,6 +44,15 @@ func main() {
 	r.Register("solutions/security-compliance/index.html", site.SecurityCompliancePage())
 	r.Register("solutions/technical-agility/index.html", site.TechnicalAgilityPage())
 	r.Register("demo/index.html", site.DemoPage())
+
+	// Initialize and register blog posts
+	blogManager := NewBlogManager()
+	if err := blogManager.LoadPosts(); err != nil {
+		log.Printf("Warning: failed to load blog posts: %v", err)
+	} else {
+		fmt.Printf("Loaded %d blog posts\n", len(blogManager.GetAllPosts()))
+		blogManager.RegisterWithRenderer(r)
+	}
 
 	if *dev {
 		// Run development server

@@ -37,7 +37,13 @@ func (r *ConcreteRenderer) RenderAll(ctx context.Context, outputDir string) erro
 	}
 
 	for path, component := range r.Paths {
-		f, err := os.Create(filepath.Join(outputDir, path))
+		fullPath := filepath.Join(outputDir, path)
+		// Create parent directories if they don't exist
+		if err := os.MkdirAll(filepath.Dir(fullPath), 0755); err != nil {
+			return err
+		}
+		
+		f, err := os.Create(fullPath)
 		if err != nil {
 			return err
 		}

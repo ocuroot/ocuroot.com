@@ -1,0 +1,160 @@
+/* Blog Layout Styles */
+
+/* Hero post layout */
+.hero-blog-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.hero-image-third {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+
+.hero-text-flex {
+  flex: 1;
+  min-width: 0; /* Prevents flex item from overflowing */
+}
+
+.hero-cover-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Blog post grid cards */
+.card-with-image {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  transition: box-shadow 0.2s ease;
+}
+
+.card-with-image:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card-image-third {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+}
+
+.card-content-flex {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-cover-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+/* Individual blog post cover image */
+.blog-post-cover-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.blog-cover-section {
+  margin: 2rem 0;
+}
+
+.blog-cover-image {
+  text-align: center;
+}
+
+.image-credit {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.image-credit a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.image-credit a:hover {
+  text-decoration: underline;
+}
+
+/* Blog post grid layout */
+.blog-posts-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-blog-layout,
+  .card-with-image {
+    flex-direction: column;
+  }
+  
+  .hero-image-third,
+  .card-image-third {
+    flex: none;
+    max-width: 100%;
+  }
+  
+  .hero-blog-layout {
+    gap: 1rem;
+  }
+  
+  .card-with-image {
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* Blog post content styling */
+.blog-post-title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-post-title a:hover {
+  color: #3b82f6;
+}
+
+.blog-post-meta {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0.5rem 0;
+}
+
+.blog-post-description {
+  color: #374151;
+  line-height: 1.6;
+  margin: 1rem 0;
+}
+
+.blog-post-tags {
+  margin-top: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+}

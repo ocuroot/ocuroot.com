@@ -1,0 +1,204 @@
+package site
+
+import (
+	"time"
+)
+
+// Author represents blog post author information for templates
+type Author struct {
+	Name    string
+	Picture string
+}
+
+// CoverImage represents blog post cover image information for templates
+type CoverImage struct {
+	Src       string
+	Alt       string
+	Credit    string
+	CreditURL string
+}
+
+// BlogPost represents a blog post for templates
+type BlogPost struct {
+	Title      string
+	Slug       string
+	Excerpt    string
+	Date       time.Time
+	Author     Author
+	CoverImage CoverImage
+	Tags       []string
+	Content    string // HTML content
+}
+
+// Blog post template
+templ BlogPostPage(post *BlogPost) {
+	@root() {
+		<!-- Blog Post Header -->
+		<section class="hero-section">
+			<div class="hero-background">
+				<div class="hero-overlay"></div>
+			</div>
+			
+			<div class="hero-content">
+				<div class="hero-text">
+					<h1 class="hero-title">
+						{ post.Title }
+					</h1>
+					<div class="blog-meta">
+						<p class="hero-subtitle">
+							By { post.Author.Name } • { post.Date.Format("January 2, 2006") }
+						</p>
+						if len(post.Tags) > 0 {
+							<div class="blog-tags">
+								for _, tag := range post.Tags {
+									<span class="tag">{ tag }</span>
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Cover Image Section -->
+		if post.CoverImage.Src != "" {
+			<section class="blog-cover-section">
+				<div class="content-container">
+					<div class="blog-cover-image">
+						<img src={ post.CoverImage.Src } alt={ post.CoverImage.Alt } class="blog-post-cover-image"/>
+						if post.CoverImage.Credit != "" {
+							<div class="image-credit">
+								if post.CoverImage.CreditURL != "" {
+									<a href={ templ.URL(post.CoverImage.CreditURL) } target="_blank" rel="noopener">{ post.CoverImage.Credit }</a>
+								} else {
+									{ post.CoverImage.Credit }
+								}
+							</div>
+						}
+					</div>
+				</div>
+			</section>
+		}
+
+		<hr class="section-divider"/>
+		
+		<!-- Blog Content -->
+		<section class="features-section">
+			<div class="content-container">
+				<article class="blog-content">
+					@templ.Raw(post.Content)
+				</article>
+			</div>
+		</section>
+
+		<hr class="section-divider"/>
+	}
+}
+
+// Blog listing template with hero post design
+templ BlogListPage(posts []*BlogPost) {
+	@root() {
+		if len(posts) > 0 {
+			<!-- Hero Post Section -->
+			<section class="hero-section">
+				<div class="hero-background">
+					<div class="hero-overlay"></div>
+				</div>
+				
+				<div class="hero-content">
+					<div class="hero-blog-layout">
+						if posts[0].CoverImage.Src != "" {
+							<div class="hero-blog-image hero-image-third">
+								<a href={ templ.URL("/blog/" + posts[0].Slug) }>
+									<img src={ posts[0].CoverImage.Src } alt={ posts[0].CoverImage.Alt } class="hero-cover-image"/>
+								</a>
+							</div>
+						}
+						<div class="hero-blog-text hero-text-flex">
+							<h1 class="hero-title">
+								<a href={ templ.URL("/blog/" + posts[0].Slug) } class="hero-link">
+									{ posts[0].Title }
+								</a>
+							</h1>
+							<div class="hero-meta">
+								<span class="hero-date">{ posts[0].Date.Format("January 2, 2006") }</span>
+								<span class="hero-author">by { posts[0].Author.Name }</span>
+							</div>
+							<p class="hero-subtitle">
+								{ posts[0].Excerpt }
+							</p>
+							if len(posts[0].Tags) > 0 {
+								<div class="hero-tags">
+									for _, tag := range posts[0].Tags {
+										<span class="tag">{ tag }</span>
+									}
+								</div>
+							}
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<hr class="section-divider"/>
+			
+			if len(posts) > 1 {
+				<!-- More Stories Section -->
+				<section class="features-section">
+					<div class="content-container">
+						<h2 class="section-title">More Stories</h2>
+						<div class="blog-posts-grid">
+							for i, post := range posts {
+								if i > 0 {
+									<article class="blog-post-card card-with-image">
+										if post.CoverImage.Src != "" {
+											<div class="blog-post-image card-image-third">
+												<a href={ templ.URL("/blog/" + post.Slug) }>
+													<img src={ post.CoverImage.Src } alt={ post.CoverImage.Alt } class="post-cover-image"/>
+												</a>
+											</div>
+										}
+										<div class="blog-post-content card-content-flex">
+											<h3 class="blog-post-title">
+												<a href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
+											</h3>
+											<div class="blog-post-meta">
+												<span class="blog-post-date">{ post.Date.Format("January 2, 2006") }</span>
+												<span class="blog-post-author">by { post.Author.Name }</span>
+											</div>
+											<p class="blog-post-description">{ post.Excerpt }</p>
+											if len(post.Tags) > 0 {
+												<div class="blog-post-tags">
+													for _, tag := range post.Tags {
+														<span class="tag">{ tag }</span>
+													}
+												</div>
+											}
+										</div>
+									</article>
+								}
+							}
+						</div>
+					</div>
+				</section>
+			}
+		} else {
+			<!-- Empty State -->
+			<section class="hero-section">
+				<div class="hero-background">
+					<div class="hero-overlay"></div>
+				</div>
+				
+				<div class="hero-content">
+					<div class="hero-text">
+						<h1 class="hero-title">Blog</h1>
+						<p class="hero-subtitle">
+							No blog posts available yet. Check back soon for updates on CI/CD, deployment orchestration, and developer tools.
+						</p>
+					</div>
+				</div>
+			</section>
+		}
+
+		<hr class="section-divider"/>
+	}
+}
