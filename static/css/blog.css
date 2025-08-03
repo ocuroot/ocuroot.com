@@ -68,7 +68,7 @@
 }
 
 .blog-cover-section {
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .blog-cover-image {
@@ -97,6 +97,91 @@
   display: grid;
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+/* Blog Post Heading Section */
+.blog-heading {
+  padding: 2rem 0;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.blog-heading-text {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.blog-heading-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.blog-heading-meta {
+  margin-top: 1rem;
+}
+
+.blog-heading-subtitle {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.blog-heading-tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.blog-heading-tag {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.blog-heading-tag:hover {
+  background: #2563eb;
+}
+
+.blog-content {
+  font-size: 18px;
+}
+
+.blog-content p {
+  margin-bottom: 1rem;
+}
+
+.blog-content p code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875em;
+}
+
+/**
+ * Style blog post images
+ * - Set a maximum height for blog post images, so they don't overflow their containers
+ * - Center images horizontally
+ */
+.blog-content img {
+  max-height: 600px;
+  display: block;
+  margin: 0 auto;
+}
+
+.blog-content h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
 }
 
 /* Responsive adjustments */
@@ -157,4 +242,69 @@
   font-size: 0.75rem;
   margin-right: 0.5rem;
   margin-bottom: 0.25rem;
+}
+
+/* Code Block Card Styling */
+pre {
+  background: #1e1e1e;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 1.5rem 0;
+  padding: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+pre code {
+  display: block;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background: transparent;
+  color: #dcdcdc;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: none;
+  border-radius: 0;
+}
+
+/* Language label for code blocks */
+pre[class*="language-"]::before {
+  content: attr(class);
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #374151;
+  color: #f9fafb;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-bottom-left-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* Custom scrollbar for code blocks */
+pre::-webkit-scrollbar {
+  height: 8px;
+  background: #2d2d2d;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Firefox scrollbar */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #2d2d2d;
 }

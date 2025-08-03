@@ -34,28 +34,22 @@ type BlogPost struct {
 templ BlogPostPage(post *BlogPost) {
 	@root() {
 		<!-- Blog Post Header -->
-		<section class="hero-section">
-			<div class="hero-background">
-				<div class="hero-overlay"></div>
-			</div>
-			
-			<div class="hero-content">
-				<div class="hero-text">
-					<h1 class="hero-title">
-						{ post.Title }
-					</h1>
-					<div class="blog-meta">
-						<p class="hero-subtitle">
-							By { post.Author.Name } • { post.Date.Format("January 2, 2006") }
-						</p>
-						if len(post.Tags) > 0 {
-							<div class="blog-tags">
-								for _, tag := range post.Tags {
-									<span class="tag">{ tag }</span>
-								}
-							</div>
-						}
-					</div>
+		<section class="blog-heading">			
+			<div class="blog-heading-text">
+				<h1 class="blog-heading-title">
+					{ post.Title }
+				</h1>
+				<div class="blog-heading-meta">
+					<p class="blog-heading-subtitle">
+						By { post.Author.Name } • { post.Date.Format("January 2, 2006") }
+					</p>
+					if len(post.Tags) > 0 {
+						<div class="blog-heading-tags">
+							for _, tag := range post.Tags {
+								<span class="blog-heading-tag">{ tag }</span>
+							}
+						</div>
+					}
 				</div>
 			</div>
 		</section>

@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -33,16 +34,16 @@ type OGImage struct {
 
 // BlogPost represents a parsed blog post
 type BlogPost struct {
-	Title       string     `yaml:"title"`
-	Slug        string     `yaml:"slug"`
-	Excerpt     string     `yaml:"excerpt"`
-	Date        time.Time  `yaml:"date"`
-	Author      Author     `yaml:"author"`
-	CoverImage  CoverImage `yaml:"coverImage"`
-	OGImage     OGImage    `yaml:"ogImage"`
-	Tags        []string   `yaml:"tags"`
-	Content     string     // HTML content from markdown
-	Raw         string     // Original markdown content
+	Title      string     `yaml:"title"`
+	Slug       string     `yaml:"slug"`
+	Excerpt    string     `yaml:"excerpt"`
+	Date       time.Time  `yaml:"date"`
+	Author     Author     `yaml:"author"`
+	CoverImage CoverImage `yaml:"coverImage"`
+	OGImage    OGImage    `yaml:"ogImage"`
+	Tags       []string   `yaml:"tags"`
+	Content    string     // HTML content from markdown
+	Raw        string     // Original markdown content
 }
 
 // BlogComponent wraps a blog post for the ConcreteRenderer
@@ -162,34 +163,25 @@ func (bm *BlogManager) RegisterWithRenderer(r *ConcreteRenderer) {
 
 // registerBlogAssets registers blog-related static assets
 func (bm *BlogManager) registerBlogAssets(r *ConcreteRenderer) {
-	// Find all blog asset files (cover images with different extensions)
-	coverPatterns := []string{
-		"static/assets/blog/**/cover.jpg",
-		"static/assets/blog/**/cover.png",
-		"static/assets/blog/**/cover.jpeg",
-	}
-
-	for _, pattern := range coverPatterns {
-		assetFiles, err := filepath.Glob(pattern)
+	// Walk through all files under static/assets/blog
+	err := filepath.Walk("static/assets/blog", func(path string, info os.FileInfo, err error) error {
 		if err != nil {
-			fmt.Printf("Warning: failed to find blog assets with pattern %s: %v\n", pattern, err)
-			continue
+			return err
 		}
 
-		for _, assetFile := range assetFiles {
-			// Convert static/assets/blog/why-ocuroot/cover.jpg -> assets/blog/why-ocuroot/cover.jpg
-			webPath := strings.TrimPrefix(assetFile, "static/")
-			r.Register(webPath, StaticFileComponent(assetFile))
+		// Skip directories, only register files
+		if info.IsDir() {
+			return nil
 		}
-	}
 
-	// Also register author images
-	authorFiles, err := filepath.Glob("static/assets/blog/authors/*")
-	if err == nil {
-		for _, authorFile := range authorFiles {
-			webPath := strings.TrimPrefix(authorFile, "static/")
-			r.Register(webPath, StaticFileComponent(authorFile))
-		}
+		// Convert static/assets/blog/why-ocuroot/cover.jpg -> assets/blog/why-ocuroot/cover.jpg
+		webPath := strings.TrimPrefix(path, "static/")
+		r.Register(webPath, StaticFileComponent(path))
+		return nil
+	})
+
+	if err != nil {
+		fmt.Printf("Warning: failed to walk blog assets directory: %v\n", err)
 	}
 }
 

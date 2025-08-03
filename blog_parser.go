@@ -27,7 +27,8 @@ func NewBlogParser() *BlogParser {
 			parser.WithAutoHeadingID(),
 		),
 		goldmark.WithRendererOptions(
-			html.WithHardWraps(),
+			html.WithUnsafe(),
+			// html.WithHardWraps(),
 			html.WithXHTML(),
 		),
 	)
@@ -83,14 +84,14 @@ func (bp *BlogParser) Parse(content []byte) (*BlogPost, error) {
 				if strings.HasPrefix(strings.TrimSpace(line), "date:") {
 					dateValue := strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(line), "date:"))
 					dateValue = strings.Trim(dateValue, `"'`)
-					
+
 					// Try different date formats
 					formats := []string{
 						"2006-01-02",
 						"2006-01-02T15:04:05Z07:00",
 						"2006-01-02 15:04:05",
 					}
-					
+
 					for _, format := range formats {
 						if parsedDate, err := time.Parse(format, dateValue); err == nil {
 							post.Date = parsedDate
