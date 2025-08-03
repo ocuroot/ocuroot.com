@@ -31,7 +31,18 @@ func main() {
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
 	r.Register("static/images/why-ocuroot-cover.jpg", StaticFileComponent("static/images/why-ocuroot-cover.jpg"))
 	r.Register("static/images/social.png", StaticFileComponent("static/images/social.png"))
+	r.Register("images/see-production.svg", StaticFileComponent("static/images/see-production.svg"))
+	r.Register("images/software-demo.jpg", StaticFileComponent("static/images/software-demo.jpg"))
+	r.Register("images/server_racks.jpg", StaticFileComponent("static/images/server_racks.jpg"))
+	r.Register("images/code.png", StaticFileComponent("static/images/code.png"))
+	r.Register("images/export-history.gif", StaticFileComponent("static/images/export-history.gif"))
+	r.Register("images/add_environment.gif", StaticFileComponent("static/images/add_environment.gif"))
 	r.Register("index.html", site.Index())
+	r.Register("solutions/cost-management/index.html", site.CostManagementPage())
+	r.Register("solutions/productivity-satisfaction/index.html", site.ProductivitySatisfactionPage())
+	r.Register("solutions/security-compliance/index.html", site.SecurityCompliancePage())
+	r.Register("solutions/technical-agility/index.html", site.TechnicalAgilityPage())
+	r.Register("demo/index.html", site.DemoPage())
 
 	if *dev {
 		// Run development server
