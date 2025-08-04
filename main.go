@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
 
@@ -51,10 +52,8 @@ func main() {
 		blogManager.RegisterWithRenderer(r)
 	}
 
-	cssService := css.NewService()
-	jsService := js.NewService()
-	r.Register(cssService.GetVersionedURL(), cssService)
-	r.Register(jsService.GetVersionedURL(), jsService)
+	r.Register(css.Default().GetVersionedURL(), AsComponent(css.Default().GetCombined()))
+	r.Register(js.Default().GetVersionedURL(), AsComponent(js.Default().GetCombined()))
 
 	if *dev {
 		// Run development server
@@ -79,4 +78,11 @@ func main() {
 	}
 	fmt.Println("Templates rendered to dist/")
 
+}
+
+type AsComponent string
+
+func (ac AsComponent) Render(ctx context.Context, w io.Writer) error {
+	w.Write([]byte(ac))
+	return nil
 }

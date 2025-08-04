@@ -15,7 +15,6 @@ var ErrPathNotFound = errors.New("path not found")
 
 type Renderer interface {
 	Register(path string, c templ.Component)
-
 	RenderAll(ctx context.Context, outputDir string) error
 	RenderPath(ctx context.Context, path string) ([]byte, error)
 	HasPath(path string) bool

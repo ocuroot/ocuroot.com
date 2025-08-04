@@ -4,7 +4,7 @@ go 1.24.2
 
 require (
 	github.com/a-h/templ v0.3.920
-	github.com/ocuroot/ui v0.0.6
+	github.com/ocuroot/ui v0.0.7
 	github.com/yuin/goldmark v1.4.13
 	gopkg.in/yaml.v3 v3.0.1
 )

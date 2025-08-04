@@ -20,7 +20,7 @@ import (
 var blogCSS []byte
 
 func init() {
-	css.Register("blog", blogCSS)
+	css.Default().Add(blogCSS)
 }
 
 // Author represents blog post author information
