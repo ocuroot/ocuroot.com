@@ -11,7 +11,17 @@ import (
 	"time"
 
 	"github.com/ocuroot/templbuildr/site"
+	"github.com/ocuroot/ui/css"
+
+	_ "embed"
 )
+
+//go:embed static/css/blog.css
+var blogCSS []byte
+
+func init() {
+	css.Register("blog", blogCSS)
+}
 
 // Author represents blog post author information
 type Author struct {

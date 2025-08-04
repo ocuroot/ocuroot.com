@@ -6,6 +6,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/a-h/templ"
 )
@@ -25,6 +26,7 @@ type ConcreteRenderer struct {
 }
 
 func (r *ConcreteRenderer) Register(path string, c templ.Component) {
+	path = strings.TrimPrefix(path, "/")
 	r.Paths[path] = c
 }
 
@@ -42,7 +44,7 @@ func (r *ConcreteRenderer) RenderAll(ctx context.Context, outputDir string) erro
 		if err := os.MkdirAll(filepath.Dir(fullPath), 0755); err != nil {
 			return err
 		}
-		
+
 		f, err := os.Create(fullPath)
 		if err != nil {
 			return err

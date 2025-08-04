@@ -25,9 +25,6 @@ func main() {
 		Paths: make(map[string]templ.Component),
 	}
 	r.Register("favicon.ico", StaticComponent(assets.Favicon))
-	r.Register("style.css", css.NewService())
-	r.Register("css/blog.css", StaticFileComponent("static/css/blog.css"))
-	r.Register("script.js", js.NewService())
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
 	r.Register("static/images/why-ocuroot-cover.jpg", StaticFileComponent("static/images/why-ocuroot-cover.jpg"))
@@ -54,11 +51,21 @@ func main() {
 		blogManager.RegisterWithRenderer(r)
 	}
 
+	cssService := css.NewService()
+	jsService := js.NewService()
+	r.Register(cssService.GetVersionedURL(), cssService)
+	r.Register(jsService.GetVersionedURL(), jsService)
+
 	if *dev {
 		// Run development server
 		devServer := &DevServer{
 			Renderer: r,
 		}
+
+		for path := range r.Paths {
+			fmt.Printf("Registered path %s\n", path)
+		}
+
 		addr := fmt.Sprintf(":%d", *devPort)
 		fmt.Printf("Starting development server on http://localhost%s\n", addr)
 		log.Fatal(http.ListenAndServe(addr, devServer))
@@ -71,4 +78,5 @@ func main() {
 		log.Fatalf("failed to render: %v", err)
 	}
 	fmt.Println("Templates rendered to dist/")
+
 }
