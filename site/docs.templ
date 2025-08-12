@@ -1,0 +1,58 @@
+package site
+
+import (
+	"github.com/ocuroot/ui/components"
+	"github.com/ocuroot/ui/components/docnav"
+)
+
+// BlogPost represents a blog post for templates
+type DocPage struct {
+	Title   string
+	Path    string
+	Content string // HTML content
+}
+
+templ DocsPage(page *DocPage) {
+	@root() {
+		@docnav.DocNav(docnav.DocNavProps{
+			CurrentPath: page.Path,
+			Sections: []docnav.NavSection{
+				{
+					Heading: "Getting Started",
+					Links: []docnav.NavLink{
+						{Title: "Introduction", URL: ""},
+						{Title: "Install", URL: "install"},
+						{Title: "Quickstart", URL: "getting-started"},
+					},
+				},
+				{
+					Heading: "Guides",
+					Links: []docnav.NavLink{
+						{Title: "Projects", URL: "guides/projects"},
+						{Title: "Deployments", URL: "guides/deployments"},
+						{Title: "Environments", URL: "guides/environments"},
+					},
+				},
+				{
+					Heading: "Reference",
+					Links: []docnav.NavLink{
+						{Title: "CLI", URL: "reference/cli", Children: []docnav.NavLink{
+							{Title: "Commands", URL: "reference/cli/commands"},
+							{Title: "Config", URL: "reference/cli/config"},
+						}},
+						{Title: "SDK", URL: "reference/sdk"},
+						{Title: "API", URL: "reference/api", Children: []docnav.NavLink{
+							{Title: "Auth", URL: "reference/api/auth"},
+							{Title: "Releases", URL: "reference/api/releases"},
+						}},
+					},
+				},
+			},
+		}) {
+			@components.Container() {
+				<h1>{ page.Title }</h1>
+				@templ.Raw(page.Content)
+			}
+		}
+	}
+}

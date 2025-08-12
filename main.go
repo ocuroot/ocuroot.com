@@ -45,11 +45,14 @@ func main() {
 
 	// Initialize and register blog posts
 	blogManager := NewBlogManager()
-	if err := blogManager.LoadPosts(); err != nil {
+	if err := blogManager.LoadAndRegister(r); err != nil {
 		log.Printf("Warning: failed to load blog posts: %v", err)
-	} else {
-		fmt.Printf("Loaded %d blog posts\n", len(blogManager.GetAllPosts()))
-		blogManager.RegisterWithRenderer(r)
+	}
+
+	// Initialize and register documentation
+	docsManager := NewDocsManager()
+	if err := docsManager.LoadAndRegister(r); err != nil {
+		log.Printf("Warning: failed to load documentation: %v", err)
 	}
 
 	r.Register(css.Default().GetVersionedURL(), AsComponent(css.Default().GetCombined()))

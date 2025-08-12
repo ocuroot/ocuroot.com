@@ -118,7 +118,7 @@ templ BlogListPage(posts []*BlogPost) {
 								<span class="hero-date">{ posts[0].Date.Format("January 2, 2006") }</span>
 								<span class="hero-author">by { posts[0].Author.Name }</span>
 							</div>
-							<p class="hero-subtitle">
+							<p class="blog-hero-subtitle">
 								{ posts[0].Excerpt }
 							</p>
 							if len(posts[0].Tags) > 0 {

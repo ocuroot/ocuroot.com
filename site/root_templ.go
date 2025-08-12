@@ -72,7 +72,7 @@ func root() templ.Component {
 					},
 					navbar.NavLink{
 						Name: "Docs",
-						URL:  "https://docs.ocuroot.com",
+						URL:  "/docs",
 					},
 					navbar.NavLink{
 						Name:   "Book a Demo",
