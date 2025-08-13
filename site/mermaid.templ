@@ -1,0 +1,67 @@
+package site
+
+// MermaidScript adds the Mermaid.js library and initializes it
+templ MermaidScript() {
+	<script type="module">
+		import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+		
+		// Initialize Mermaid with configuration
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: 'default',
+			themeVariables: {
+				primaryColor: '#f3e5f5',
+				primaryTextColor: '#4a148c',
+				primaryBorderColor: '#4a148c',
+				lineColor: '#666',
+				secondaryColor: '#e1f5fe',
+				tertiaryColor: '#e8f5e8'
+			},
+			flowchart: {
+				useMaxWidth: true,
+				htmlLabels: true
+			},
+			block: {
+				useMaxWidth: true
+			}
+		});
+
+		// Function to render Mermaid diagrams
+		function renderMermaidDiagrams() {
+			const mermaidElements = document.querySelectorAll('pre code.language-mermaid, .mermaid');
+			
+			mermaidElements.forEach((element, index) => {
+				// If it's a code block, extract the content and create a proper mermaid div
+				if (element.tagName === 'CODE' && element.classList.contains('language-mermaid')) {
+					const mermaidCode = element.textContent;
+					const mermaidDiv = document.createElement('div');
+					mermaidDiv.className = 'mermaid';
+					mermaidDiv.textContent = mermaidCode;
+					
+					// Replace the pre/code block with the mermaid div
+					const preElement = element.closest('pre');
+					if (preElement) {
+						preElement.parentNode.replaceChild(mermaidDiv, preElement);
+					}
+				}
+			});
+			
+			// Re-run mermaid on the new elements
+			mermaid.run();
+		}
+
+		// Run when DOM is loaded
+		if (document.readyState === 'loading') {
+			document.addEventListener('DOMContentLoaded', renderMermaidDiagrams);
+		} else {
+			renderMermaidDiagrams();
+		}
+
+		// Also run on theme changes (if you have theme switching)
+		document.addEventListener('themeChanged', () => {
+			mermaid.run();
+		});
+	</script>
+}
+
+

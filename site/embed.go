@@ -9,6 +9,10 @@ import (
 //go:embed style.css
 var styleCSS []byte
 
+//go:embed mermaid.css
+var mermaidCSS []byte
+
 func init() {
 	css.Default().Add(styleCSS)
+	css.Default().Add(mermaidCSS)
 }

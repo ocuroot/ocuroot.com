@@ -3,3 +3,45 @@
     color: var(--text-secondary);
 	font-size: 1.25rem;
 }
+
+.docs-container {
+    font-size: 1rem;
+}
+
+.docs-container h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.docs-container h2, h3, h4, h5, h6 {
+    margin-top: 2rem;
+}
+
+.docs-container h1 {
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+.docs-container h2 {
+    font-size: 2rem;
+}
+
+.docs-container h3 {
+    font-size: 1.5rem;
+}
+
+.docs-container p {
+    margin-bottom: 1rem;
+}
+
+.docs-container ul {
+    margin-left: 1rem;
+    list-style: disc;
+    margin-bottom: 1rem;
+}
+
+.docs-container li {
+    margin-bottom: 0.5rem;
+}
+    

@@ -84,7 +84,7 @@ func DocsPage(page *DocPage) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(page.Title)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 53, Col: 20}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 56, Col: 20}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -100,7 +100,7 @@ func DocsPage(page *DocPage) templ.Component {
 					}
 					return nil
 				})
-				templ_7745c5c3_Err = components.Container().Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.Container("docs-container").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -112,35 +112,46 @@ func DocsPage(page *DocPage) templ.Component {
 					{
 						Heading: "Getting Started",
 						Links: []docnav.NavLink{
-							{Title: "Introduction", URL: ""},
-							{Title: "Install", URL: "install"},
-							{Title: "Quickstart", URL: "getting-started"},
+							{Title: "Introduction", URL: "/docs"},
+							{Title: "Installation", URL: "/docs/installation"},
+							{Title: "Quickstart", URL: "/docs/quickstart"},
 						},
 					},
 					{
-						Heading: "Guides",
+						Heading: "Usage",
 						Links: []docnav.NavLink{
-							{Title: "Projects", URL: "guides/projects"},
-							{Title: "Deployments", URL: "guides/deployments"},
-							{Title: "Environments", URL: "guides/environments"},
+							{Title: "Releases", URL: "/docs/usage/releases"},
+							{Title: "State", URL: "/docs/usage/state"},
+							{Title: "Dependencies", URL: "/docs/usage/dependencies"},
+							{Title: "Scheduling work", URL: "/docs/usage/scheduling-work"},
+							{Title: "CI Integration", URL: "/docs/usage/ci-integration"},
+							{Title: "Use with AI tools", URL: "/docs/usage/ai-integration"},
 						},
 					},
 					{
 						Heading: "Reference",
 						Links: []docnav.NavLink{
-							{Title: "CLI", URL: "reference/cli", Children: []docnav.NavLink{
-								{Title: "Commands", URL: "reference/cli/commands"},
-								{Title: "Config", URL: "reference/cli/config"},
+							{Title: "CLI", URL: "/docs/reference/cli", Children: []docnav.NavLink{
+								{Title: "Commands", URL: "/docs/reference/cli/commands"},
+								{Title: "Config", URL: "/docs/reference/cli/config"},
 							}},
-							{Title: "SDK", URL: "reference/sdk"},
-							{Title: "API", URL: "reference/api", Children: []docnav.NavLink{
-								{Title: "Auth", URL: "reference/api/auth"},
-								{Title: "Releases", URL: "reference/api/releases"},
+							{Title: "SDK", URL: "/docs/reference/sdk"},
+							{Title: "API", URL: "/docs/reference/api", Children: []docnav.NavLink{
+								{Title: "Auth", URL: "/docs/reference/api/auth"},
+								{Title: "Releases", URL: "/docs/reference/api/releases"},
 							}},
 						},
 					},
 				},
 			}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = MermaidScript().Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

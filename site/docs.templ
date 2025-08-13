@@ -20,39 +20,43 @@ templ DocsPage(page *DocPage) {
 				{
 					Heading: "Getting Started",
 					Links: []docnav.NavLink{
-						{Title: "Introduction", URL: ""},
-						{Title: "Install", URL: "install"},
-						{Title: "Quickstart", URL: "getting-started"},
+						{Title: "Introduction", URL: "/docs"},
+						{Title: "Installation", URL: "/docs/installation"},
+						{Title: "Quickstart", URL: "/docs/quickstart"},
 					},
 				},
 				{
-					Heading: "Guides",
+					Heading: "Usage",
 					Links: []docnav.NavLink{
-						{Title: "Projects", URL: "guides/projects"},
-						{Title: "Deployments", URL: "guides/deployments"},
-						{Title: "Environments", URL: "guides/environments"},
+						{Title: "Releases", URL: "/docs/usage/releases"},
+						{Title: "State", URL: "/docs/usage/state"},
+						{Title: "Dependencies", URL: "/docs/usage/dependencies"},
+						{Title: "Scheduling work", URL: "/docs/usage/scheduling-work"},
+						{Title: "CI Integration", URL: "/docs/usage/ci-integration"},
+						{Title: "Use with AI tools", URL: "/docs/usage/ai-integration"},
 					},
 				},
 				{
 					Heading: "Reference",
 					Links: []docnav.NavLink{
-						{Title: "CLI", URL: "reference/cli", Children: []docnav.NavLink{
-							{Title: "Commands", URL: "reference/cli/commands"},
-							{Title: "Config", URL: "reference/cli/config"},
+						{Title: "CLI", URL: "/docs/reference/cli", Children: []docnav.NavLink{
+							{Title: "Commands", URL: "/docs/reference/cli/commands"},
+							{Title: "Config", URL: "/docs/reference/cli/config"},
 						}},
-						{Title: "SDK", URL: "reference/sdk"},
-						{Title: "API", URL: "reference/api", Children: []docnav.NavLink{
-							{Title: "Auth", URL: "reference/api/auth"},
-							{Title: "Releases", URL: "reference/api/releases"},
+						{Title: "SDK", URL: "/docs/reference/sdk"},
+						{Title: "API", URL: "/docs/reference/api", Children: []docnav.NavLink{
+							{Title: "Auth", URL: "/docs/reference/api/auth"},
+							{Title: "Releases", URL: "/docs/reference/api/releases"},
 						}},
 					},
 				},
 			},
 		}) {
-			@components.Container() {
+			@components.Container("docs-container") {
 				<h1>{ page.Title }</h1>
 				@templ.Raw(page.Content)
 			}
 		}
+		@MermaidScript()
 	}
 }
