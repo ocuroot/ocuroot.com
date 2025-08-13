@@ -26,36 +26,39 @@
 }
 
 /* Blog post grid cards */
-.card-with-image {
+.blog-post-card {
   display: flex;
-  gap: 1rem;
-  padding: 1.5rem;
+  flex-direction: column;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   background: var(--bg-surface);
   transition: box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
-.card-with-image:hover {
+.blog-post-card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.card-image-third {
-  flex: 0 0 33.333%;
-  max-width: 33.333%;
+.blog-post-image {
+  width: 100%;
+  overflow: hidden;
 }
 
-.card-content-flex {
+.blog-post-content {
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
   flex: 1;
-  min-width: 0;
 }
 
 .post-cover-image {
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+  height: 200px;
   object-fit: cover;
-  aspect-ratio: 16/9;
+  transition: transform 0.2s ease;
+}
+
+.blog-post-card:hover .post-cover-image {
+  transform: scale(1.05);
 }
 
 /* Individual blog post cover image */
@@ -95,8 +98,22 @@
 /* Blog post grid layout */
 .blog-posts-grid {
   display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   margin-top: 2rem;
+}
+
+/* Responsive grid columns */
+@media (min-width: 640px) {
+  .blog-posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-posts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Blog Post Heading Section */
@@ -107,7 +124,6 @@
 }
 
 .blog-heading-text {
-  max-width: 800px;
   margin: 0 auto;
   padding: 0 1rem;
   text-align: center;
@@ -186,35 +202,46 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .hero-blog-layout,
-  .card-with-image {
+  .hero-blog-layout {
     flex-direction: column;
+    gap: 1rem;
   }
   
-  .hero-image-third,
-  .card-image-third {
+  .hero-image-third {
     flex: none;
     max-width: 100%;
   }
   
-  .hero-blog-layout {
-    gap: 1rem;
-  }
-  
-  .card-with-image {
-    gap: 1rem;
+  .blog-post-content {
     padding: 1rem;
   }
 }
 
 /* Blog post content styling */
+.blog-post-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-post-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.blog-post-title {
+  margin-top: 0;
+}
+
 .blog-post-title a {
   color: inherit;
   text-decoration: none;
 }
 
 .blog-post-title a:hover {
-  color: var(--primary-color);
+  color: var(--link-hover-color);
 }
 
 .blog-post-meta {

@@ -140,35 +140,32 @@ templ BlogListPage(posts []*BlogPost) {
 				<!-- More Stories Section -->
 				<section class="features-section">
 					<div class="content-container">
-						<h2 class="section-title">More Stories</h2>
 						<div class="blog-posts-grid">
 							for i, post := range posts {
 								if i > 0 {
-									<article class="blog-post-card card-with-image">
-										if post.CoverImage.Src != "" {
-											<div class="blog-post-image card-image-third">
-												<a href={ templ.URL("/blog/" + post.Slug) }>
+									<article class="blog-post-card">
+										<a href={ templ.URL("/blog/" + post.Slug) } class="blog-post-link">
+											if post.CoverImage.Src != "" {
+												<div class="blog-post-image">
 													<img src={ post.CoverImage.Src } alt={ post.CoverImage.Alt } class="post-cover-image"/>
-												</a>
-											</div>
-										}
-										<div class="blog-post-content card-content-flex">
-											<h3 class="blog-post-title">
-												<a href={ templ.URL("/blog/" + post.Slug) }>{ post.Title }</a>
-											</h3>
-											<div class="blog-post-meta">
-												<span class="blog-post-date">{ post.Date.Format("January 2, 2006") }</span>
-												<span class="blog-post-author">by { post.Author.Name }</span>
-											</div>
-											<p class="blog-post-description">{ post.Excerpt }</p>
-											if len(post.Tags) > 0 {
-												<div class="blog-post-tags">
-													for _, tag := range post.Tags {
-														<span class="tag">{ tag }</span>
-													}
 												</div>
 											}
-										</div>
+											<div class="blog-post-content">
+												<h3 class="blog-post-title">{ post.Title }</h3>
+												<div class="blog-post-meta">
+													<span class="blog-post-date">{ post.Date.Format("January 2, 2006") }</span>
+													<span class="blog-post-author">by { post.Author.Name }</span>
+												</div>
+												<p class="blog-post-description">{ post.Excerpt }</p>
+												if len(post.Tags) > 0 {
+													<div class="blog-post-tags">
+														for _, tag := range post.Tags {
+															<span class="tag">{ tag }</span>
+														}
+													</div>
+												}
+											</div>
+										</a>
 									</article>
 								}
 							}
