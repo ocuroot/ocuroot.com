@@ -1,6 +1,8 @@
 package site
 
 import (
+	"fmt"
+	
 	"github.com/ocuroot/ui/components"
 	"github.com/ocuroot/ui/components/docnav"
 )
@@ -15,7 +17,7 @@ type DocPage struct {
 templ DocsPage(page *DocPage) {
 	@root() {
 		@docnav.DocNav(docnav.DocNavProps{
-			CurrentPath: page.Path,
+			CurrentPath: fmt.Sprintf("/docs/%s", page.Path),
 			Sections: []docnav.NavSection{
 				{
 					Heading: "Getting Started",
