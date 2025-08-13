@@ -15,7 +15,7 @@ import (
 	_ "embed"
 )
 
-//go:embed static/css/blog.css
+//go:embed site/blog.css
 var blogCSS []byte
 
 func init() {

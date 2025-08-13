@@ -12,6 +12,8 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
+	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/yuin/goldmark-highlighting/v2"
 )
 
 // DocPage represents a parsed documentation page
@@ -42,7 +44,15 @@ type DocsParser struct {
 // NewDocsParser creates a new docs parser
 func NewDocsParser() *DocsParser {
 	md := goldmark.New(
-		goldmark.WithExtensions(extension.GFM),
+		goldmark.WithExtensions(
+			extension.GFM,
+			highlighting.NewHighlighting(
+				highlighting.WithStyle("github"),
+				highlighting.WithFormatOptions(
+					chromahtml.WithClasses(true),
+				),
+			),
+		),
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
 		),

@@ -11,6 +11,8 @@ import (
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
+	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/yuin/goldmark-highlighting/v2"
 	"gopkg.in/yaml.v3"
 )
 
@@ -29,7 +31,16 @@ type Parser[F any] struct {
 // NewParser creates a new parser
 func NewParser[F any]() *Parser[F] {
 	md := goldmark.New(
-		goldmark.WithExtensions(extension.GFM, NewTemplInjector()),
+		goldmark.WithExtensions(
+			extension.GFM,
+			highlighting.NewHighlighting(
+				highlighting.WithStyle("github"),
+				highlighting.WithFormatOptions(
+					chromahtml.WithClasses(true),
+				),
+			),
+			NewTemplInjector(),
+		),
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
 		),
