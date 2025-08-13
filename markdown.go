@@ -29,7 +29,7 @@ type Parser[F any] struct {
 // NewParser creates a new parser
 func NewParser[F any]() *Parser[F] {
 	md := goldmark.New(
-		goldmark.WithExtensions(extension.GFM),
+		goldmark.WithExtensions(extension.GFM, NewTemplInjector()),
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
 		),
