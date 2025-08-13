@@ -1,47 +1,48 @@
+
 .blog-hero-subtitle {
     margin-top: 8px;
     color: var(--text-secondary);
 	font-size: 1.25rem;
 }
 
-.docs-container {
+.markdown-content {
     font-size: 1rem;
 }
 
-.docs-container h1, h2, h3, h4, h5, h6 {
+.markdown-content h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-color);
 }
 
-.docs-container h2, h3, h4, h5, h6 {
+.markdown-content h2, h3, h4, h5, h6 {
     margin-top: 2rem;
 }
 
-.docs-container h1 {
+.markdown-content h1 {
     font-weight: 800;
     font-size: 3rem;
 }
 
-.docs-container h2 {
+.markdown-content h2 {
     font-size: 2rem;
 }
 
-.docs-container h3 {
+.markdown-content h3 {
     font-size: 1.5rem;
 }
 
-.docs-container p {
+.markdown-content p {
     margin-bottom: 1rem;
 }
 
-.docs-container ul {
+.markdown-content ul {
     margin-left: 1rem;
     list-style: disc;
     margin-bottom: 1rem;
 }
 
-.docs-container li {
+.markdown-content li {
     margin-bottom: 0.5rem;
 }
     

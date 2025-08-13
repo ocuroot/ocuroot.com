@@ -79,7 +79,7 @@ templ BlogPostPage(post *BlogPost) {
 		<!-- Blog Content -->
 		<section class="features-section">
 			<div class="content-container">
-				<article class="blog-content">
+				<article class="blog-content markdown-content">
 					@templ.Raw(post.Content)
 				</article>
 			</div>

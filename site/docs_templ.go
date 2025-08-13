@@ -102,7 +102,7 @@ func DocsPage(page *DocPage) templ.Component {
 					}
 					return nil
 				})
-				templ_7745c5c3_Err = components.Container("docs-container").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+				templ_7745c5c3_Err = components.Container("docs-container markdown-content").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}

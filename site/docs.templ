@@ -2,7 +2,7 @@ package site
 
 import (
 	"fmt"
-	
+
 	"github.com/ocuroot/ui/components"
 	"github.com/ocuroot/ui/components/docnav"
 )
@@ -54,7 +54,7 @@ templ DocsPage(page *DocPage) {
 				},
 			},
 		}) {
-			@components.Container("docs-container") {
+			@components.Container("docs-container markdown-content") {
 				<h1>{ page.Title }</h1>
 				@templ.Raw(page.Content)
 			}
