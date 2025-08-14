@@ -43,7 +43,7 @@ func CostManagementPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Reduce cloud spend</h1><p class=\"hero-subtitle\">Compute and storage costs can add up quickly when you're not paying attention! Ocuroot helps you keep track of your resources both in production and your CI pipelines, so you can get the best value for money.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section><hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Reduce cloud spend</h1><p class=\"hero-subtitle\">Compute and storage costs can add up quickly when you're not paying attention! Ocuroot helps you keep track of your resources both in production and your CI pipelines, so you can get the best value for money.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -69,7 +69,7 @@ func CostManagementPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " <hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, " ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -95,7 +95,7 @@ func CostManagementPage() templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " <hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, " ")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -118,10 +118,6 @@ func CostManagementPage() templ.Component {
 				return nil
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithImage("Scale down runners with efficient CI/CD", "/images/server_racks.jpg", "Data center server racks", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, " <hr class=\"section-divider\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -168,7 +164,7 @@ func ProductivitySatisfactionPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Release faster</h1><p class=\"hero-subtitle\">If your product is going to be successful, you need to be able to ship features quickly and consistently. To do that, your developers need tools that help them iterate quickly and don't get in the way. Ocuroot is designed from the ground up to operate with the principles that your team is already familiar with, and provides abstractions that help them hit the ground running.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section><hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Release faster</h1><p class=\"hero-subtitle\">If your product is going to be successful, you need to be able to ship features quickly and consistently. To do that, your developers need tools that help them iterate quickly and don't get in the way. Ocuroot is designed from the ground up to operate with the principles that your team is already familiar with, and provides abstractions that help them hit the ground running.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -184,17 +180,13 @@ func ProductivitySatisfactionPage() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Debug your build and deployment processes on your local machine before pushing to CI.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more waiting for CI runners or debugging obscure environment issues in the cloud.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">With Ocuroot, you can run your entire pipeline locally, test changes instantly, and catch issues before they reach your CI environment.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Debug your build and deployment processes on your local machine before pushing to CI.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more waiting for CI runners or debugging obscure environment issues in the cloud.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">With Ocuroot, you can run your entire pipeline locally, test changes instantly, and catch issues before they reach your CI environment.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithImage("Test pipelines locally", "/images/code.png", "No YAML, just imperative code", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var8), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, " <hr class=\"section-divider\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -241,7 +233,7 @@ func SecurityCompliancePage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Simplify audits & compliance</h1><p class=\"hero-subtitle\">Security and compliance are two of the largest non-functional requirements for your operations, and many aspects are non-negotiable. So efficiency is the name of the game. You want to ensure you're meeting your obligations without stealing time from building your product.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section><hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Simplify audits & compliance</h1><p class=\"hero-subtitle\">Security and compliance are two of the largest non-functional requirements for your operations, and many aspects are non-negotiable. So efficiency is the name of the game. You want to ensure you're meeting your obligations without stealing time from building your product.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -257,17 +249,13 @@ func SecurityCompliancePage() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Export comprehensive audit trails with a single click, showing exactly what was deployed when and by whom.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more scrambling to collect evidence during audit season - everything is automatically tracked and ready to export.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Maintain compliance with regulatory requirements while moving at the pace your business demands.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Export comprehensive audit trails with a single click, showing exactly what was deployed when and by whom.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more scrambling to collect evidence during audit season - everything is automatically tracked and ready to export.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Maintain compliance with regulatory requirements while moving at the pace your business demands.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithImage("Audit your SDLC without endless screenshots", "/images/export-history.gif", "Audit your SDLC without endless screenshots", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var11), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, " <hr class=\"section-divider\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -314,7 +302,7 @@ func TechnicalAgilityPage() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Manage your growing footprint</h1><p class=\"hero-subtitle\">Your customers' requirements are constantly evolving, and your architecture needs to keep up. Ocuroot helps you move fast <strong>without</strong> breaking stuff.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section><hr class=\"section-divider\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Manage your growing footprint</h1><p class=\"hero-subtitle\">Your customers' requirements are constantly evolving, and your architecture needs to keep up. Ocuroot helps you move fast <strong>without</strong> breaking stuff.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -330,17 +318,13 @@ func TechnicalAgilityPage() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Spin up new environments instantly to test features, run experiments, or demo to customers.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more waiting for infrastructure provisioning or complex setup processes.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Visualize what's running where, manage complex deployment workflows, and adapt quickly to changing requirements.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "<p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Spin up new environments instantly to test features, run experiments, or demo to customers.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">No more waiting for infrastructure provisioning or complex setup processes.</p><p style=\"margin-bottom: 1.5rem; font-size: 1.125rem; color: var(--text-secondary);\">Visualize what's running where, manage complex deployment workflows, and adapt quickly to changing requirements.</p><a href=\"/demo\" class=\"button\">Schedule a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithImage("Create environments on-demand", "/images/add_environment.gif", "Create environments on-demand with Ocuroot", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var14), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, " <hr class=\"section-divider\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
