@@ -42,6 +42,7 @@ func main() {
 	r.Register("solutions/security-compliance/index.html", site.SecurityCompliancePage())
 	r.Register("solutions/technical-agility/index.html", site.TechnicalAgilityPage())
 	r.Register("demo/index.html", site.DemoPage())
+	r.Register("privacy/index.html", site.PrivacyPolicyPage())
 
 	// Initialize and register blog posts
 	blogManager := NewBlogManager()
