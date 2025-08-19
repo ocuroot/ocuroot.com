@@ -27,6 +27,48 @@ in an example repo:
 github.com/ocuroot/example/-/frontend/release.ocu.star/@1/call/build#output/image
 ```
 
+## State vs. Intent
+
+Intent References are denoted by the use of `+` instead of `@` for the release. So the below ref would refer
+to the desired state for deploying the frontend to the production environment.
+
+```
+github.com/ocuroot/example/-/frontend/release.ocu.star/+/deploy/production
+```
+
+All manual changes to state must be made by first modifying intent. Ocuroot will then identify the appropriate
+actions to take to apply this intent to current state.
+
+## State Storage
+
+Details of where state is to be stored should be set in your `repo.ocu.star` file. You can use the same store
+for both state and intent, or separate stores to help manage access. Typically, the state store should only
+be modified by Ocuroot itself, while the intent store can be modified by users as they see fit.
+
+Ocuroot supports both *filesystem* and *git* backends for state storage. Typically, you would use the
+*filesystem* backend for testing your Ocuroot configuration, and the *git* backend to share state among
+your team and CI system.
+
+To configure a *filesystem* backend:
+
+```python
+store.set(
+    store.fs(".store/state"),
+    intent=store.fs(".store/intent"),
+)
+```
+
+The paths provided are relative to the location of the `repo.ocu.star` file.
+
+To configure a *git* backend:
+
+```python
+store.set(
+    store.git("https://github.com/example/ocuroot-state.git", branch="state"),
+    intent=store.git("https://github.com/example/ocuroot-intent.git", branch="intent"),
+)
+```
+
 ## Working with state
 
 State can be queried and manipulated using the `ocuroot state` commands. They are summarized here, but you
@@ -55,13 +97,56 @@ $ ocuroot state get github.com/ocuroot/ocuroot/-/release.ocu.star/@/call/build_d
 
 ### ocuroot state match
 
+The `match` command lets you search for refs that match a specific glob pattern.
+
+For example, to find all deployments to the `production environment`:
+
+```bash
+$ ocuroot state match "**/deploy/production"
+```
+
 ### ocuroot state view
+
+The `view` command starts a web UI for navigating Ocuroot state.
+
+By default, the UI is hosted at [http://localhost:3000](http://localhost:3000).
+
+![The state UI showing a release](/assets/docs/usage_state/state_view.png)
 
 ### ocuroot state set
 
+The `set` command allows you to set the content of the document at a specific ref.
+The ref must be an intent ref (e.g. `repo/-/release.ocu.star/+/custom/approve`), which can be
+synchronized to state via the `ocuroot state apply` or `ocuroot work any` commands. 
+
 ### ocuroot state delete
 
+Similar to `ocuroot state set`, the `delete` command allows you to delete the document at a specific intent ref.
+
 ## Types of state
+
+### Environments
+
+Environments are not associated with Repos, and are global to your state store.
+
+An Environment ref is of the form:
+
+```
+@/environment/[name]
+```
+
+An Environment document must contain the same name as the ref, and a map of `attributes`.
+
+You can create an environment from the command-line by setting the intent using the JSON format:
+
+```bash
+$ ocuroot state set -f=json "+/environment/production" '{"attributes": {"type": "prod"},"name": "production"}'
+```
+
+Once this intent is applied, the environment will be created and populated with any appropriate deployments.
+
+You can also delete an environment with `ocuroot state delete`, which will destroy any deployments before removing
+the environment from state.
 
 ### Releases
 
@@ -100,24 +185,53 @@ github.com/ocuroot/example/-/frontend/release.ocu.star/@2/commit/fa56a23554a75a7
 
 Note that there can be multiple releases at a single commit.
 
-### Calls
+### Work
 
+Work within a Release is represented as either *Calls* or *Deployments* below the Release Ref.
 
+A Call represents a one-off step within a Release, like a build or test. Call refs are of the form:
 
-### Deployments
+```
+github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/call/[name]
+```
 
-### Environments
+A Deployment represents a release of a package to a specific environment. Deployment refs are of the form:
+
+```
+github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/deploy/[environment]
+```
+
+Below Call and Deployment Refs will be details of each execution of the work. These are numbered sequentially
+and will have a single status ref associated with them to make it easy to match against work with a specific result.
+
+For example:
+
+```
+github.com/ocuroot/example/-/release.ocu.star/@1/call/build/1/status/complete
+```
+
+Shows that the first execution of the build call in release 1 of the package at `release.ocu.star` was completed successfully.
+
+The logs for this execution are also available at:
+
+```
+github.com/ocuroot/example/-/release.ocu.star/@1/call/build/1/logs
+```
 
 ### Custom State
 
-## State vs. Intent
+Custom State provides a means to create and manage free-form data within your state. This can be useful
+for requiring human approval to proceed in a Release, changing configuration of a deployment without having
+to create a brand-new release or tracking information about teams.
 
-Intent References are denoted by the use of `+` instead of `@` for the release. So the below ref would refer
-to the desired state for deploying the frontend to the production environment.
+Custom State may be stored globally:
 
 ```
-github.com/ocuroot/example/-/frontend/release.ocu.star/+/deploy/production
+@/custom/[name]
 ```
 
-All manual changes to state must be made by first modifying intent. Ocuroot will then identify the appropriate
-actions to take to apply this intent to current state.
+Or scoped to a specific release:
+
+```
+github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/custom/[name]
+```

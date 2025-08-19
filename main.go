@@ -28,14 +28,6 @@ func main() {
 	r.Register("favicon.ico", StaticComponent(assets.Favicon))
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
-	r.Register("static/images/why-ocuroot-cover.jpg", StaticFileComponent("static/images/why-ocuroot-cover.jpg"))
-	r.Register("static/images/social.png", StaticFileComponent("static/images/social.png"))
-	r.Register("images/see-production.svg", StaticFileComponent("static/images/see-production.svg"))
-	r.Register("images/software-demo.jpg", StaticFileComponent("static/images/software-demo.jpg"))
-	r.Register("images/server_racks.jpg", StaticFileComponent("static/images/server_racks.jpg"))
-	r.Register("images/code.png", StaticFileComponent("static/images/code.png"))
-	r.Register("images/export-history.gif", StaticFileComponent("static/images/export-history.gif"))
-	r.Register("images/add_environment.gif", StaticFileComponent("static/images/add_environment.gif"))
 	r.Register("index.html", site.Index())
 	r.Register("solutions/cost-management/index.html", site.CostManagementPage())
 	r.Register("solutions/productivity-satisfaction/index.html", site.ProductivitySatisfactionPage())
@@ -58,6 +50,8 @@ func main() {
 
 	r.Register(css.Default().GetVersionedURL(), AsComponent(css.Default().GetCombined()))
 	r.Register(js.Default().GetVersionedURL(), AsComponent(js.Default().GetCombined()))
+
+	RegisterStatic(r)
 
 	if *dev {
 		// Run development server

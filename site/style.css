@@ -46,6 +46,17 @@
     margin-bottom: 0.5rem;
 }
 
+/**
+ * Style markdown post images
+ * - Set a maximum height for blog post images, so they don't overflow their containers
+ * - Center images horizontally
+ */
+ .markdown-content img {
+    max-height: 600px;
+    display: block;
+    margin: 0 auto;
+  }  
+
 /* Footer Styles */
 .site-footer {
     background-color: var(--bg-secondary);

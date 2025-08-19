@@ -185,17 +185,6 @@
   font-size: 0.875em;
 }
 
-/**
- * Style blog post images
- * - Set a maximum height for blog post images, so they don't overflow their containers
- * - Center images horizontally
- */
-.blog-content img {
-  max-height: 600px;
-  display: block;
-  margin: 0 auto;
-}
-
 .blog-content h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }

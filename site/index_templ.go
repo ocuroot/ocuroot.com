@@ -65,7 +65,7 @@ func Index() templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Why Ocuroot?", "/static/images/why-ocuroot-cover.jpg", "Person in yellow gloves checking a green plant", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithImage("Why Ocuroot?", "/images/why-ocuroot-cover.jpg", "Person in yellow gloves checking a green plant", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -91,7 +91,7 @@ func Index() templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Follow Ocuroot's Development", "/static/images/social.png", "Social media and development updates", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithImage("Follow Ocuroot's Development", "/images/social.png", "Social media and development updates", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

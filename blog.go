@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"os"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -169,33 +168,6 @@ func (bm *BlogManager) RegisterWithRenderer(r *ConcreteRenderer) {
 	for slug, post := range bm.posts {
 		path := fmt.Sprintf("blog/%s/index.html", slug)
 		r.Register(path, &BlogComponent{Post: post})
-	}
-
-	// Register blog assets (cover images, etc.)
-	bm.registerBlogAssets(r)
-}
-
-// registerBlogAssets registers blog-related static assets
-func (bm *BlogManager) registerBlogAssets(r *ConcreteRenderer) {
-	// Walk through all files under static/assets/blog
-	err := filepath.Walk("static/assets/blog", func(path string, info os.FileInfo, err error) error {
-		if err != nil {
-			return err
-		}
-
-		// Skip directories, only register files
-		if info.IsDir() {
-			return nil
-		}
-
-		// Convert static/assets/blog/why-ocuroot/cover.jpg -> assets/blog/why-ocuroot/cover.jpg
-		webPath := strings.TrimPrefix(path, "static/")
-		r.Register(webPath, StaticFileComponent(path))
-		return nil
-	})
-
-	if err != nil {
-		fmt.Printf("Warning: failed to walk blog assets directory: %v\n", err)
 	}
 }
 
