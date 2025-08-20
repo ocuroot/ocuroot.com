@@ -3,10 +3,15 @@ PROXY_PORT=8081
 
 local_resource(
     'site',
-    cmd='templ generate',
-    serve_cmd='go run . -dev=true -dev-port=' + str(PORT),
+    cmd='templ generate && go run .',
     deps=["."],
     ignore=["**/*_templ.go"],
+)
+
+local_resource(
+  name="cf_worker",
+  serve_cmd='wrangler dev --port=' + str(PORT),
+  deps=['wrangler.jsonc']
 )
 
 local_resource(
@@ -21,5 +26,6 @@ local_resource(
     res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); \
     return next(); \
   }'),
+  resource_deps=["site", "cf_worker"],
 )
 
