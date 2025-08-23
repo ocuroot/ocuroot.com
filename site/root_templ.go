@@ -53,19 +53,9 @@ func root(path string) templ.Component {
 				LogoURL:   "/static/logo.svg",
 				Items: []navbar.NavItem{
 					navbar.NavLink{
-						Name:   "About",
+						Name:   "Product",
 						URL:    "/",
 						Active: path == "/",
-					},
-					navbar.NavDropdown{
-						ID:   "solutions",
-						Name: "Solutions",
-						Items: []navbar.DropdownItem{
-							{Name: "Release faster", URL: "/solutions/productivity-satisfaction"},
-							{Name: "Reduce cloud spend", URL: "/solutions/cost-management"},
-							{Name: "Simplify audits & compliance", URL: "/solutions/security-compliance"},
-							{Name: "Manage your growing footprint", URL: "/solutions/technical-agility"},
-						},
 					},
 					navbar.NavLink{
 						Name:   "Blog",

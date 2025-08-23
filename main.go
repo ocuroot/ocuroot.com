@@ -29,10 +29,6 @@ func main() {
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
 	r.Register("index.html", site.Index())
-	r.Register("solutions/cost-management/index.html", site.CostManagementPage())
-	r.Register("solutions/productivity-satisfaction/index.html", site.ProductivitySatisfactionPage())
-	r.Register("solutions/security-compliance/index.html", site.SecurityCompliancePage())
-	r.Register("solutions/technical-agility/index.html", site.TechnicalAgilityPage())
 	r.Register("demo/index.html", site.DemoPage())
 	r.Register("privacy/index.html", site.PrivacyPolicyPage())
 
