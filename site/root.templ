@@ -56,32 +56,6 @@ templ root(path string) {
 }
 
 templ SocialButtons() {
-	
-	<style>
-		.social-buttons {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 1rem;
-			padding: 0.75rem 1rem;
-		}
-		.social-button {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.5rem;
-			text-decoration: none;
-			color: white;
-			transition: color 0.2s ease-in-out;
-		}
-		.social-button:hover {
-			color: #b3b3b3;
-		}
-		.social-button img {
-			width: 1.5rem;
-			height: 1.5rem;
-		}
-	</style>
-	
 	<div class="social-buttons">
 	<a href="https://linkedin.com/company/ocuroot" target="_blank" rel="noopener noreferrer" class="social-button" data-vmtrc="SocialClick" data-vmtrc-platform="LinkedIn">
 		<img src="/icons/linkedin.svg" alt="LinkedIn"/>
