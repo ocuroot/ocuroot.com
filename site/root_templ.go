@@ -82,6 +82,9 @@ func root(path string) templ.Component {
 						URL:    "/demo",
 						Active: path == "/demo",
 					},
+					navbar.NavComponent{
+						Component: SocialButtons(),
+					},
 				},
 				ShowThemeToggle: true,
 			}).Render(ctx, templ_7745c5c3_Buffer)
@@ -115,6 +118,35 @@ func root(path string) templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = components.Body().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func SocialButtons() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var3 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var3 == nil {
+			templ_7745c5c3_Var3 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<style>\n\t\t.social-buttons {\n\t\t\tdisplay: flex;\n\t\t\talign-items: center;\n\t\t\tjustify-content: space-between;\n\t\t\tgap: 1rem;\n\t\t\tpadding: 0.75rem 1rem;\n\t\t}\n\t\t.social-button {\n\t\t\tdisplay: inline-flex;\n\t\t\talign-items: center;\n\t\t\tgap: 0.5rem;\n\t\t\ttext-decoration: none;\n\t\t\tcolor: white;\n\t\t\ttransition: color 0.2s ease-in-out;\n\t\t}\n\t\t.social-button:hover {\n\t\t\tcolor: #b3b3b3;\n\t\t}\n\t\t.social-button img {\n\t\t\twidth: 1.5rem;\n\t\t\theight: 1.5rem;\n\t\t}\n\t</style><div class=\"social-buttons\"><a href=\"https://linkedin.com/company/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"LinkedIn\"><img src=\"/icons/linkedin.svg\" alt=\"LinkedIn\"></a> <a href=\"https://bsky.app/profile/ocuroot.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"Bluesky\"><img src=\"/icons/bluesky.svg\" alt=\"Bluesky\"></a> <a href=\"https://github.com/ocuroot/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"GitHub\"><img src=\"/icons/github.svg\" alt=\"GitHub\"></a></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
