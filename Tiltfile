@@ -5,7 +5,7 @@ local_resource(
     'site',
     cmd='templ generate && go run .',
     deps=["."],
-    ignore=["**/*_templ.go"],
+    ignore=["**/*_templ.go", "dist/**", ".wrangler/**", "node_modules/**"],
 )
 
 local_resource(
@@ -18,7 +18,7 @@ local_resource(
     'sync',
     cmd="yarn global add browser-sync",
     serve_cmd="""browser-sync start \
-  --files './**/*_templ.go' \
+  --files './dist/**' \
   --port {proxy_port} \
   --proxy 'localhost:{port}' \
   --reload-delay 500 \

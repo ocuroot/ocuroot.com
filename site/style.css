@@ -42,6 +42,12 @@
     margin-bottom: 1rem;
 }
 
+.markdown-content ol {
+    margin-left: 1rem;
+    list-style: decimal;
+    margin-bottom: 1rem;
+}
+
 .markdown-content li {
     margin-bottom: 0.5rem;
 }

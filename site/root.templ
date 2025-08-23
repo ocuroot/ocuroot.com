@@ -6,7 +6,7 @@ import (
 	"github.com/ocuroot/ui/js"
 )
 
-templ root() {
+templ root(path string) {
 	@components.Body(){
 		@navbar.Navbar(navbar.NavbarConfig{
 			BrandName:       "Ocuroot",
@@ -16,6 +16,7 @@ templ root() {
 				navbar.NavLink{
 					Name: "About",
 					URL:  "/",
+					Active: path == "/",
 				},
 				navbar.NavDropdown{
 					ID:   "solutions",
@@ -30,15 +31,17 @@ templ root() {
 				navbar.NavLink{
 					Name: "Blog",
 					URL:  "/blog",
+					Active: path == "/blog",
 				},
 				navbar.NavLink{
 					Name: "Docs",
 					URL:  "/docs",
+					Active: path == "/docs",
 				},
 				navbar.NavLink{
 					Name:   "Book a Demo",
 					URL:    "/demo",
-					Active: true,
+					Active: path == "/demo",
 				},
 			},
 			ShowThemeToggle: true,

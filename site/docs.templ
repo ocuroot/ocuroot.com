@@ -15,7 +15,7 @@ type DocPage struct {
 }
 
 templ DocsPage(page *DocPage) {
-	@root() {
+	@root("/docs") {
 		@docnav.DocNav(docnav.DocNavProps{
 			CurrentPath: fmt.Sprintf("/docs/%s", page.Path),
 			Sections: []docnav.NavSection{

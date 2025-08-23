@@ -14,7 +14,7 @@ import (
 	"github.com/ocuroot/ui/js"
 )
 
-func root() templ.Component {
+func root(path string) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -53,8 +53,9 @@ func root() templ.Component {
 				LogoURL:   "/static/logo.svg",
 				Items: []navbar.NavItem{
 					navbar.NavLink{
-						Name: "About",
-						URL:  "/",
+						Name:   "About",
+						URL:    "/",
+						Active: path == "/",
 					},
 					navbar.NavDropdown{
 						ID:   "solutions",
@@ -67,17 +68,19 @@ func root() templ.Component {
 						},
 					},
 					navbar.NavLink{
-						Name: "Blog",
-						URL:  "/blog",
+						Name:   "Blog",
+						URL:    "/blog",
+						Active: path == "/blog",
 					},
 					navbar.NavLink{
-						Name: "Docs",
-						URL:  "/docs",
+						Name:   "Docs",
+						URL:    "/docs",
+						Active: path == "/docs",
 					},
 					navbar.NavLink{
 						Name:   "Book a Demo",
 						URL:    "/demo",
-						Active: true,
+						Active: path == "/demo",
 					},
 				},
 				ShowThemeToggle: true,

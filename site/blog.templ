@@ -32,7 +32,7 @@ type BlogPost struct {
 
 // Blog post template
 templ BlogPostPage(post *BlogPost) {
-	@root() {
+	@root("/blog") {
 		<!-- Blog Post Header -->
 		<section class="blog-heading">			
 			<div class="blog-heading-text">
@@ -90,7 +90,7 @@ templ BlogPostPage(post *BlogPost) {
 
 // Blog listing template with hero post design
 templ BlogListPage(posts []*BlogPost) {
-	@root() {
+	@root("/blog") {
 		if len(posts) > 0 {
 			<!-- Hero Post Section -->
 			<section class="hero-section">
