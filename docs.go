@@ -75,6 +75,9 @@ func (dm *DocsManager) LoadAndRegister(r *ConcreteRenderer) error {
 	if err := dm.LoadCLIPages(); err != nil {
 		return err
 	}
+	if err := dm.LoadSDKPages(); err != nil {
+		return err
+	}
 
 	dm.RegisterWithRenderer(r)
 	return nil
@@ -114,6 +117,7 @@ func (dc *DocComponent) Render(ctx context.Context, w io.Writer) error {
 		Content: dc.Post.Content,
 
 		CLINav: CLINav(),
+		SDKNav: SDKNav(),
 	}
 
 	// Render template

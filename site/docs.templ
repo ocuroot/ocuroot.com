@@ -17,6 +17,7 @@ type DocPage struct {
 	Content string // HTML content
 
 	CLINav []docnav.NavLink
+	SDKNav []docnav.NavLink
 }
 
 templ DocsPage(page *DocPage) {
@@ -51,7 +52,11 @@ templ DocsPage(page *DocPage) {
 							URL: "/docs/reference/cli", 
 							Children: page.CLINav,
 						},
-						{Title: "SDK", URL: "/docs/reference/sdk"},
+						{
+							Title: "SDK", 
+							URL: "/docs/reference/sdk", 
+							Children: page.SDKNav,
+						},
 					},
 				},
 			},
@@ -82,3 +87,4 @@ templ CLIContent(cmd *cobra.Command) {
 		}
 	}
 }
+

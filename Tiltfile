@@ -5,7 +5,7 @@ local_resource(
     'site',
     cmd='templ generate && go run .',
     deps=["."],
-    ignore=["**/*_templ.go", "dist/**", ".wrangler/**", "node_modules/**"],
+    ignore=["**/*_templ.go", "dist", "dist/**", ".wrangler/**", "node_modules/**"],
 )
 
 local_resource(
