@@ -5,13 +5,18 @@ import (
 
 	"github.com/ocuroot/ui/components"
 	"github.com/ocuroot/ui/components/docnav"
+
+	"github.com/spf13/cobra"
 )
 
 // BlogPost represents a blog post for templates
 type DocPage struct {
 	Title   string
 	Path    string
+	
 	Content string // HTML content
+
+	CLINav []docnav.NavLink
 }
 
 templ DocsPage(page *DocPage) {
@@ -41,15 +46,12 @@ templ DocsPage(page *DocPage) {
 				{
 					Heading: "Reference",
 					Links: []docnav.NavLink{
-						{Title: "CLI", URL: "/docs/reference/cli", Children: []docnav.NavLink{
-							{Title: "Commands", URL: "/docs/reference/cli/commands"},
-							{Title: "Config", URL: "/docs/reference/cli/config"},
-						}},
+						{
+							Title: "CLI", 
+							URL: "/docs/reference/cli", 
+							Children: page.CLINav,
+						},
 						{Title: "SDK", URL: "/docs/reference/sdk"},
-						{Title: "API", URL: "/docs/reference/api", Children: []docnav.NavLink{
-							{Title: "Auth", URL: "/docs/reference/api/auth"},
-							{Title: "Releases", URL: "/docs/reference/api/releases"},
-						}},
 					},
 				},
 			},
@@ -60,5 +62,23 @@ templ DocsPage(page *DocPage) {
 			}
 		}
 		@MermaidScript()
+	}
+}
+
+templ CLIContent(cmd *cobra.Command) {
+	<pre class="text">{ cmd.Long }</pre>
+	<pre class="text">
+		{ cmd.UsageString() }
+	</pre>
+
+	if len(cmd.Commands()) > 0 {
+		<h2>Subcommands</h2>
+		for _, subCmd := range cmd.Commands() {
+			<h3>{ subCmd.Name() }</h3>
+			<pre class="text">{ subCmd.Long }</pre>
+			<pre class="text">
+				{ subCmd.UsageString() }
+			</pre>
+		}
 	}
 }

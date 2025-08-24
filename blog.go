@@ -91,7 +91,6 @@ func (blc *BlogListComponent) Render(ctx context.Context, w io.Writer) error {
 			Content:    post.Content,
 		}
 	}
-	fmt.Printf("Got %d blog posts", len(sitePosts))
 	return site.BlogListPage(sitePosts).Render(ctx, w)
 }
 

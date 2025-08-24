@@ -7,13 +7,13 @@ import (
 	"path"
 	"path/filepath"
 
+	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/ocuroot/templbuildr/site"
 	"github.com/yuin/goldmark"
+	highlighting "github.com/yuin/goldmark-highlighting/v2"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/parser"
 	"github.com/yuin/goldmark/renderer/html"
-	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
-	"github.com/yuin/goldmark-highlighting/v2"
 )
 
 // DocPage represents a parsed documentation page
@@ -72,6 +72,10 @@ func (dm *DocsManager) LoadAndRegister(r *ConcreteRenderer) error {
 	if err := dm.LoadPages(); err != nil {
 		return err
 	}
+	if err := dm.LoadCLIPages(); err != nil {
+		return err
+	}
+
 	dm.RegisterWithRenderer(r)
 	return nil
 }
@@ -84,8 +88,6 @@ func (dm *DocsManager) LoadPages() error {
 		return fmt.Errorf("failed to find documentation pages: %w", err)
 	}
 
-	var pages []*Content[DocPage]
-
 	for _, file := range files {
 		fmt.Printf("Loading documentation page %s\n", file)
 		page, err := dm.parser.ParseFile(file)
@@ -94,7 +96,6 @@ func (dm *DocsManager) LoadPages() error {
 			continue
 		}
 
-		pages = append(pages, page)
 		dm.pages[page.FrontMatter.Path] = page
 	}
 
@@ -111,6 +112,8 @@ func (dc *DocComponent) Render(ctx context.Context, w io.Writer) error {
 		Title:   dc.Post.FrontMatter.Title,
 		Path:    dc.Post.FrontMatter.Path,
 		Content: dc.Post.Content,
+
+		CLINav: CLINav(),
 	}
 
 	// Render template
