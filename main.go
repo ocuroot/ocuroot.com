@@ -2,11 +2,9 @@ package main
 
 import (
 	"context"
-	"flag"
 	"fmt"
 	"io"
 	"log"
-	"net/http"
 
 	"github.com/a-h/templ"
 	"github.com/ocuroot/templbuildr/site"
@@ -16,11 +14,6 @@ import (
 )
 
 func main() {
-	// Define flags
-	dev := flag.Bool("dev", false, "run in development mode with hot reload server")
-	devPort := flag.Int("dev-port", 3000, "port for development server (default 3000)")
-	flag.Parse()
-
 	// Create renderer
 	r := &ConcreteRenderer{
 		Paths: make(map[string]templ.Component),
@@ -48,22 +41,6 @@ func main() {
 	r.Register(js.Default().GetVersionedURL(), AsComponent(js.Default().GetCombined()))
 
 	RegisterStatic(r)
-
-	if *dev {
-		// Run development server
-		devServer := &DevServer{
-			Renderer: r,
-		}
-
-		for path := range r.Paths {
-			fmt.Printf("Registered path %s\n", path)
-		}
-
-		addr := fmt.Sprintf(":%d", *devPort)
-		fmt.Printf("Starting development server on http://localhost%s\n", addr)
-		log.Fatal(http.ListenAndServe(addr, devServer))
-		return
-	}
 
 	// Build static files
 	err := r.RenderAll(context.Background(), "dist")

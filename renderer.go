@@ -30,11 +30,14 @@ func (r *ConcreteRenderer) Register(path string, c templ.Component) {
 }
 
 func (r *ConcreteRenderer) RenderAll(ctx context.Context, outputDir string) error {
-	if _, err := os.Stat(outputDir); os.IsNotExist(err) {
-		err = os.MkdirAll(outputDir, 0755)
-		if err != nil {
-			return err
-		}
+	err := os.RemoveAll(outputDir)
+	if err != nil {
+		return err
+	}
+
+	err = os.MkdirAll(outputDir, 0755)
+	if err != nil {
+		return err
 	}
 
 	for path, component := range r.Paths {
