@@ -15,13 +15,13 @@ They are of the form:
 ```
 
 * `[repo]`: The URL or alias of a Git repo.
-* `[path]`: The path to a file within the repo, usually a *.ocu.star file.
+* `[path]`: The path to a file within the repo, usually a *.ocu.star file defining a Package.
 * `[release]`: A release identifier. If blank, the most recent release is implied.
 * `[subpath]`: A path to a document within the release, such as a deployment to a specific environment.
 * `[fragment]`: An optional path to a field within the document.
 
-For example, the following ref would refer to the container image for the first release of the frontend 
-in an example repo:
+For example, the following ref would refer to the container image for the first Release 
+of the "frontend" Package in an example repo:
 
 ```
 github.com/ocuroot/example/-/frontend/release.ocu.star/@1/call/build#output/image
@@ -29,8 +29,8 @@ github.com/ocuroot/example/-/frontend/release.ocu.star/@1/call/build#output/imag
 
 ## State vs. Intent
 
-Intent References are denoted by the use of `+` instead of `@` for the release. So the below ref would refer
-to the desired state for deploying the frontend to the production environment.
+Intent References are denoted by the use of `+` instead of `@` for the Release. So the below ref would refer
+to the desired state for deploying the "frontend" Package to the "production" Environment.
 
 ```
 github.com/ocuroot/example/-/frontend/release.ocu.star/+/deploy/production

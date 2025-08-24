@@ -13,9 +13,9 @@ This page will detail these mechanisms and the commands that can be used to conf
 
 ## New Releases
 
-New releases will typically be created when code is merged into the main branch of a source repo.
+New Releases will typically be created when code is merged into the main branch of a source repo.
 
-A new release is triggered via the command:
+A new Release is triggered via the command:
 
 ```bash
 ocuroot release new path/to/release.ocu.star
@@ -25,8 +25,8 @@ This process is outlined in more detail on the [Releases](/docs/usage/releases) 
 
 ## Requesting Work
 
-When a release is created, it won't always be able to run to completion. Intent changes must
-also be handled outside of a typical release. This is where we need a mechanism to request
+When a Release is created, it won't always be able to run to completion. Intent changes must
+also be handled outside of a typical Release. This is where we need a mechanism to request
 any outstanding work.
 
 ```bash

@@ -20,14 +20,16 @@ Core to Ocuroot are the concepts of *state* and *intent*. State represents the k
 applications and resources. Intent represents the desired state that you want Ocuroot to effect, allowing
 GitOps-like workflows.
 
-There are 4 key elements in state:
+The following are represented in state:
 
-* **Releases** define a process to build and deploy your applications and resources
+* **Repositories** are Git repositories containing your source code
+* **Packages** represent resources or services that can be deployed. They are defined by Ocuroot config files.
+* **Releases** are snapshots of packages at a particular commit. They track the process of building, testing and deploying the package according to your configuration.
 * **Environments** define locations where releases are deployed
 * **Deployments** represent a specific release being deployed to an environment
 * **Custom State** allows you to pass data into releases and deployments without having to modify code
 
-Of these three, Environments, Deployments and Custom State have intent equivalents so they can be manually modified.
+Environments, Deployments and Custom State have intent equivalents so they can be manually modified.
 Releases are entirely managed by Ocuroot based on the contents of your source repo.
 
 ## Architecture
