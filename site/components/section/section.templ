@@ -1,0 +1,112 @@
+package section
+
+// HeroSection creates a hero section with title, subtitle, and optional CTA
+templ HeroSection(title, subtitle, ctaText, ctaURL string) {
+	<section class="hero-section">
+		<div class="hero-background">
+			<div class="hero-overlay"></div>
+		</div>
+		
+		<div class="hero-content">
+			<div class="hero-text">
+				<h1 class="hero-title">{ title }</h1>
+				<p class="hero-subtitle">{ subtitle }</p>
+				if ctaText != "" && ctaURL != "" {
+					<div class="hero-cta">
+						<a href={ templ.URL(ctaURL) } class="button">
+							{ ctaText }
+							<svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+							</svg>
+						</a>
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+}
+
+// ContentSectionWithImage creates a content section with an optional image on left or right
+templ ContentSectionWithImage(title, imageURL, imageAlt, imageSide string) {
+	<section class="content-section">
+		<div class="content-container">
+			if title != "" {
+				<h2 class="section-title">{ title }</h2>
+			}
+			<div class={ templ.Classes("section-content-with-image", templ.KV("image-left", imageSide == "left"), templ.KV("image-right", imageSide == "right" || imageSide == "")) }>
+				if imageSide == "left" && imageURL != "" {
+					<div class="section-image">
+						<img src={ imageURL } alt={ imageAlt } class="content-image"/>
+					</div>
+				}
+				<div class="section-text-content">
+					{ children... }
+				</div>
+				if (imageSide == "right" || imageSide == "") && imageURL != "" {
+					<div class="section-image">
+						<img src={ imageURL } alt={ imageAlt } class="content-image"/>
+					</div>
+				}
+			</div>
+		</div>
+	</section>
+}
+
+templ ContentSection(title string, left templ.Component, right templ.Component) {
+	<section class="content-section">
+		<div class="content-container">
+			if title != "" {
+				<h2 class="section-title">{ title }</h2>
+			}
+			<div class={ templ.Classes("section-content-with-image") }>
+				@left
+				@right
+			</div>
+		</div>
+	</section>
+}
+
+templ ContentSectionWithTextLeft(title string, right templ.Component) {
+	<section class="content-section">
+		<div class="content-container">
+			if title != "" {
+				<h2 class="section-title">{ title }</h2>
+			}
+			<div class={ templ.Classes("section-content-with-image") }>
+				@ContentText() {
+					{ children... }
+				}
+				@right
+			</div>
+		</div>
+	</section>
+}
+
+templ ContentSectionWithTextRight(title string, left templ.Component) {
+	<section class="content-section">
+		<div class="content-container">
+			if title != "" {
+				<h2 class="section-title">{ title }</h2>
+			}
+			<div class={ templ.Classes("section-content-with-image") }>
+				@left
+				@ContentText() {
+					{ children... }
+				}
+			</div>
+		</div>
+	</section>
+}
+
+
+templ ContentImage(imageURL, imageAlt string) {
+	<div class="section-image">
+		<img src={ imageURL } alt={ imageAlt } class="content-image"/>
+	</div>
+}
+
+templ ContentText() {
+	<div class="section-text-content">
+		{ children... }
+	</div>
+}

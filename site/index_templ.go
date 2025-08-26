@@ -8,7 +8,7 @@ package site
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "github.com/ocuroot/ui/components/section"
+import "github.com/ocuroot/templbuildr/site/components/section"
 
 func Index() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -59,13 +59,18 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p>Your team think about deployments in terms of the destination: dev, staging, production. But many CI solutions don't go beyond the pipeline, making adding an environment an all-hands-on-deck slog.</p><p>Got a big customer demanding a dedicated environment for their data? Need an EU region for GDPR? Want to spin up a load-testing environment? Good luck!</p><p>Ocuroot treats environments as a first-class concept, so adding or removing an environment can be as simple as editing a single file.</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p>Your team think about deployments in terms of the destination: dev, staging, production. But many CI solutions don&apos;t go beyond the pipeline, making adding an environment an all-hands-on-deck slog.</p><p>Got a big customer demanding a dedicated environment for their data? Need an EU region for GDPR? Want to spin up a load-testing environment? Good luck!</p><p>Ocuroot treats environments as a first-class concept, so adding or removing an environment can be as simple as editing a single file.</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Environments as a first-class concept", "/images/environments.png", "No YAML, just imperative code", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithTextRight("Environments as a first-class concept",
+				section.ContentImage(
+					"/images/environments.png",
+					"No YAML, just imperative code",
+				),
+			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -91,7 +96,13 @@ func Index() templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Escape YAML hell and long cycle times", "/images/code.png", "No YAML, just imperative code", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithTextLeft(
+				"Escape YAML hell and long cycle times",
+				section.ContentImage(
+					"/images/code.png",
+					"No YAML, just imperative code",
+				),
+			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -111,19 +122,96 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<p>Follow the state of your infrastructure and applications in Ocuroot, and quickly shut down anything that's no longer needed.</p><p>With a complete view of your production resources, you can identify unused or underutilized instances, old test environments, and orphaned services that are costing you money without providing value.</p><p>Ocuroot makes it easy to track resource usage across all your environments, helping you maintain a lean and cost-effective infrastructure.</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<p>Follow the state of your infrastructure and applications in Ocuroot, and quickly shut down anything that&apos;s no longer needed.</p><p>With a complete view of your production resources, you can identify unused or underutilized instances, old test environments, and orphaned services that are costing you money without providing value.</p><p>Ocuroot makes it easy to track resource usage across all your environments, helping you maintain a lean and cost-effective infrastructure.</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("See what's running, where", "/images/see-production.svg", "An illustration showing an eye connected to various cloud resources, with an excess database crossed out", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithTextRight(
+				"See what's running, where",
+				section.ContentImage(
+					"/images/see-production.svg",
+					"An illustration showing an eye connected to various cloud resources, with an excess database crossed out",
+				),
+			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "  ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Var6 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+				templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+				templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+				if !templ_7745c5c3_IsBuffer {
+					defer func() {
+						templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+						if templ_7745c5c3_Err == nil {
+							templ_7745c5c3_Err = templ_7745c5c3_BufErr
+						}
+					}()
+				}
+				ctx = templ.InitializeContext(ctx)
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<p>Read this far and want to see Ocuroot in action? Why not try the quickstart?</p><p><a href=\"https://github.com/ocuroot/quickstart\" class=\"button\">Quickstart <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></p>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				return nil
+			})
+			templ_7745c5c3_Err = section.ContentSectionWithTextLeft(
+				"Try it for yourself!",
+				GitRepoCard("https://github.com/ocuroot/quickstart"),
+			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			return nil
 		})
 		templ_7745c5c3_Err = root("/").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func GitRepoCard(url string) templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var7 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var7 == nil {
+			templ_7745c5c3_Var7 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "<div class=\"git-repo-card\" data-repo-url=\"")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		var templ_7745c5c3_Var8 string
+		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(url)
+		if templ_7745c5c3_Err != nil {
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/index.templ`, Line: 109, Col: 47}
+		}
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><div class=\"repo-loading\">Loading repository information...</div></div>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
