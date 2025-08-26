@@ -67,11 +67,6 @@ func root(path string) templ.Component {
 						URL:    "/docs",
 						Active: path == "/docs",
 					},
-					navbar.NavLink{
-						Name:   "Book a Demo",
-						URL:    "/demo",
-						Active: path == "/demo",
-					},
 					navbar.NavComponent{
 						Component: SocialButtons(),
 					},

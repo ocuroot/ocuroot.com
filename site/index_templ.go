@@ -43,7 +43,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Your Engineers Spend 10-20% of Their Time on Pipelines. Let's Reclaim That!</h1><p class=\"hero-subtitle\">Studies show engineers spend hundreds of hours yearly on manual deployments, debugging, and pipeline maintenance. We cut the toil so your team can focus on innovation, not infrastructure.</p><div class=\"hero-cta\"><a href=\"/demo\" class=\"button\">Book a Demo <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a></div></div></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Open source CI / CD orchestration for multi-environment releases</h1><p class=\"hero-subtitle\">Map out dependencies and implement custom logic to make managing dev and production environments easy.</p><div class=\"hero-cta\"><a href=\"/docs\" class=\"button\">Read the Docs</a> <a href=\"https://github.com/ocuroot/ocuroot\" class=\"button\">View Repo <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -59,13 +59,13 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p>Debug your build and deployment processes on your local machine before pushing to CI.</p><p>No more waiting for CI runners or debugging obscure environment issues in the cloud.</p><p>With Ocuroot, you can run your entire pipeline locally, test changes instantly, and catch issues before they reach your CI environment.</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<p>Your team think about deployments in terms of the destination: dev, staging, production. But many CI solutions don't go beyond the pipeline, making adding an environment an all-hands-on-deck slog.</p><p>Got a big customer demanding a dedicated environment for their data? Need an EU region for GDPR? Want to spin up a load-testing environment? Good luck!</p><p>Ocuroot treats environments as a first-class concept, so adding or removing an environment can be as simple as editing a single file.</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Test pipelines locally", "/images/code.png", "No YAML, just imperative code", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithImage("Environments as a first-class concept", "/images/environments.png", "No YAML, just imperative code", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -85,13 +85,13 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Spin up new environments instantly to test features, run experiments, or demo to customers.</p><p>No more waiting for infrastructure provisioning or complex setup processes.</p><p>Visualize what's running where, manage complex deployment workflows, and adapt quickly to changing requirements.</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Centralized, YAML-based CI solutions two big problems. You need to learn their particular YAML DSL to even do simple branching logic. And you have to push to the remote to test every, single, change.</p><p>Ocuroot configuration is defined with Python-like Starlark syntax. So if you need an if statement or a for loop, you can just write one. Plus you can run your logic locally for super-tight feedback loops.</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Create environments on-demand", "/images/add_environment.gif", "Create environments on-demand with Ocuroot", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithImage("Escape YAML hell and long cycle times", "/images/code.png", "No YAML, just imperative code", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -117,59 +117,7 @@ func Index() templ.Component {
 				}
 				return nil
 			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Track your production resources", "/images/see-production.svg", "An illustration showing an eye connected to various cloud resources, with an excess database crossed out", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, " <!-- Why Ocuroot Section --> ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Var6 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-				templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-				templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-				if !templ_7745c5c3_IsBuffer {
-					defer func() {
-						templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-						if templ_7745c5c3_Err == nil {
-							templ_7745c5c3_Err = templ_7745c5c3_BufErr
-						}
-					}()
-				}
-				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<p>During my career, I've seen that deployment complexity invariably increases as organizations get larger.  This complexity slows down delivery with manual rollbacks, cryptic YAML files, and late-night firefighting.  I'm building Ocuroot to be the straightforward CI/CD tool I always wished I had.</p><p>Ocuroot goes beyond the traditional pipeline-as-DAG and makes builds, deployments and environments first-class concepts. Less YAML, more shipping!</p><a href=\"/blog\" class=\"button\">Read the Full Story <svg class=\"btn-icon\" fill=\"none\" stroke=\"currentColor\" viewBox=\"0 0 24 24\"><path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" d=\"M9 5l7 7-7 7\"></path></svg></a>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				return nil
-			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Why Ocuroot?", "/images/why-ocuroot-cover.jpg", "Person in yellow gloves checking a green plant", "left").Render(templ.WithChildren(ctx, templ_7745c5c3_Var6), templ_7745c5c3_Buffer)
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, " <!-- Follow Development Section --> ")
-			if templ_7745c5c3_Err != nil {
-				return templ_7745c5c3_Err
-			}
-			templ_7745c5c3_Var7 := templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
-				templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
-				templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
-				if !templ_7745c5c3_IsBuffer {
-					defer func() {
-						templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
-						if templ_7745c5c3_Err == nil {
-							templ_7745c5c3_Err = templ_7745c5c3_BufErr
-						}
-					}()
-				}
-				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<p>Ocuroot is being built in the open! I'll be posting regularly with details of new features, tweaks and interesting things I'm learning along the way.</p><p>Follow on your preferred social network for regular updates and to share your own feedback.</p><div style=\"display: flex; gap: 1.5rem; margin-top: 2rem;\"><a href=\"https://www.linkedin.com/company/ocuroot/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 font-medium\"><img src=\"/icons/linkedin.svg\" alt=\"LinkedIn\"> LinkedIn</a> <a href=\"https://bsky.app/profile/ocuroot.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 font-medium\"><img src=\"/icons/bluesky.svg\" alt=\"Bluesky\"> Bluesky</a></div>")
-				if templ_7745c5c3_Err != nil {
-					return templ_7745c5c3_Err
-				}
-				return nil
-			})
-			templ_7745c5c3_Err = section.ContentSectionWithImage("Follow Ocuroot's Development", "/images/social.png", "Social media and development updates", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var7), templ_7745c5c3_Buffer)
+			templ_7745c5c3_Err = section.ContentSectionWithImage("See what's running, where", "/images/see-production.svg", "An illustration showing an eye connected to various cloud resources, with an excess database crossed out", "right").Render(templ.WithChildren(ctx, templ_7745c5c3_Var5), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
