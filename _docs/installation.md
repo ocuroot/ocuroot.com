@@ -18,6 +18,6 @@ or allow the unsigned binary in Settings.
 If you have [Go](https://go.dev/) installed, you can build Ocuroot directly from the source repo:
 
 ```bash
-go install github.com/ocuroot/ocuroot@latest
+go install github.com/ocuroot/ocuroot/cmd/ocuroot@latest
 ```
 
