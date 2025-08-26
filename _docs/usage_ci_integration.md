@@ -10,3 +10,9 @@ This page details concrete configuration that can be applied to various CI platf
 Ocuroot.
 
 ## GitHub Actions
+
+Coming soon
+
+## Jenkins
+
+Coming soon

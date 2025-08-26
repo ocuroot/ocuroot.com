@@ -100,6 +100,14 @@ func root(path string) templ.Component {
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, " ")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = Vemetric().Render(ctx, templ_7745c5c3_Buffer)
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
 			return nil
 		})
 		templ_7745c5c3_Err = components.Body().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
@@ -131,7 +139,36 @@ func SocialButtons() templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"social-buttons\"><a href=\"https://linkedin.com/company/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"LinkedIn\"><img src=\"/icons/linkedin.svg\" alt=\"LinkedIn\"></a> <a href=\"https://bsky.app/profile/ocuroot.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"Bluesky\"><img src=\"/icons/bluesky.svg\" alt=\"Bluesky\"></a> <a href=\"https://github.com/ocuroot/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"GitHub\"><img src=\"/icons/github.svg\" alt=\"GitHub\"></a></div>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div class=\"social-buttons\"><a href=\"https://linkedin.com/company/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"LinkedIn\"><img src=\"/icons/linkedin.svg\" alt=\"LinkedIn\"></a> <a href=\"https://bsky.app/profile/ocuroot.com\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"Bluesky\"><img src=\"/icons/bluesky.svg\" alt=\"Bluesky\"></a> <a href=\"https://github.com/ocuroot/ocuroot\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"social-button\" data-vmtrc=\"SocialClick\" data-vmtrc-platform=\"GitHub\"><img src=\"/icons/github.svg\" alt=\"GitHub\"></a></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func Vemetric() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var4 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var4 == nil {
+			templ_7745c5c3_Var4 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "<script>\n\t\twindow.vmtrcq = window.vmtrcq || [];\n\t\twindow.vmtrc = window.vmtrc || function (){window.vmtrcq.push(Array.prototype.slice.call(arguments))};\n\t</script><script defer src=\"https://cdn.vemetric.com/main.js\" data-token=\"xyss0yNMWtz3cLMv\"></script>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

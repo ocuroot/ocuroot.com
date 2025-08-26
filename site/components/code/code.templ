@@ -1,0 +1,21 @@
+package code
+
+import "fmt"	
+
+templ TerminalCode(title string, language string, code string) {
+	<div class="terminal-window">
+		<div class="terminal-header">
+			<div class="terminal-buttons">
+				<div class="terminal-button close"></div>
+				<div class="terminal-button minimize"></div>
+				<div class="terminal-button maximize"></div>
+			</div>
+			if title != "" {
+				<div class="terminal-title">{ title }</div>
+			}
+		</div>
+		<div class="terminal-body">
+			<pre class="terminal-code chroma"><code class={ fmt.Sprintf("language-%s", language) }>{ code }</code></pre>
+		</div>
+	</div>
+}

@@ -37,6 +37,7 @@ templ root(path string) {
 		{ children... }
 		@Footer()
 		@js.UnifiedJSScript()
+		@Vemetric()
 	}
 }
 
@@ -52,4 +53,12 @@ templ SocialButtons() {
 		<img src="/icons/github.svg" alt="GitHub"/>
 	</a>
 	</div>
+}
+
+templ Vemetric() {
+	<script>
+		window.vmtrcq = window.vmtrcq || [];
+		window.vmtrc = window.vmtrc || function (){window.vmtrcq.push(Array.prototype.slice.call(arguments))};
+	</script>
+	<script defer src="https://cdn.vemetric.com/main.js" data-token="xyss0yNMWtz3cLMv"></script>
 }

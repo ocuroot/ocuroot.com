@@ -133,7 +133,7 @@ func DocsPage(page *DocPage) templ.Component {
 							{Title: "Dependencies", URL: "/docs/usage/dependencies"},
 							{Title: "Scheduling work", URL: "/docs/usage/scheduling-work"},
 							{Title: "CI Integration", URL: "/docs/usage/ci-integration"},
-							{Title: "Use with AI tools", URL: "/docs/usage/ai-integration"},
+							//{Title: "Use with AI tools", URL: "/docs/usage/ai-integration"},
 						},
 					},
 					{

@@ -8,7 +8,10 @@ package site
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-import "github.com/ocuroot/templbuildr/site/components/section"
+import (
+	"github.com/ocuroot/templbuildr/site/components/code"
+	"github.com/ocuroot/templbuildr/site/components/section"
+)
 
 func Index() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
@@ -43,7 +46,7 @@ func Index() templ.Component {
 				}()
 			}
 			ctx = templ.InitializeContext(ctx)
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Open source CI / CD orchestration for multi-environment releases</h1><p class=\"hero-subtitle\">Map out dependencies and implement custom logic to make managing dev and production environments easy.</p><div class=\"hero-cta\"><a href=\"/docs\" class=\"button\">Read the Docs</a> <a href=\"https://github.com/ocuroot/ocuroot\" class=\"button\">View Repo <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></div></div></div></section>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!-- Hero Section --> <section class=\"hero-section\"><div class=\"hero-background\"><div class=\"hero-overlay\"></div></div><div class=\"hero-content\"><div class=\"hero-text\"><h1 class=\"hero-title\">Open source CI / CD orchestration for multi-environment releases</h1><p class=\"hero-subtitle\">Map out dependencies and implement custom logic to make managing dev and production environments easy.</p><div class=\"hero-cta\"><a href=\"/docs\" class=\"button\" data-vmtrc=\"CTAClick\" data-vmtrc-cta=\"docs\">Read the Docs</a> <a href=\"https://github.com/ocuroot/ocuroot\" class=\"button\" data-vmtrc=\"CTAClick\" data-vmtrc-cta=\"repo\">View Repo <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></div></div></div></section>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
@@ -66,10 +69,7 @@ func Index() templ.Component {
 				return nil
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithTextRight("Environments as a first-class concept",
-				section.ContentImage(
-					"/images/environments.png",
-					"No YAML, just imperative code",
-				),
+				DeclareEnvironments(),
 			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var3), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -90,7 +90,7 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Centralized, YAML-based CI solutions two big problems. You need to learn their particular YAML DSL to even do simple branching logic. And you have to push to the remote to test every, single, change.</p><p>Ocuroot configuration is defined with Python-like Starlark syntax. So if you need an if statement or a for loop, you can just write one. Plus you can run your logic locally for super-tight feedback loops.</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Centralized, YAML-based CI solutions two big problems. You need to learn their particular YAML DSL to even do simple branching logic. And you have to push to the remote to test every, single, change.</p><p>Ocuroot configuration is defined with Python-like Starlark syntax. So if you need an if statement or a for loop, you can just write one. Plus you can run your logic locally for super-tight feedback loops.</p><p>There&apos;s even a REPL!</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -98,10 +98,7 @@ func Index() templ.Component {
 			})
 			templ_7745c5c3_Err = section.ContentSectionWithTextLeft(
 				"Escape YAML hell and long cycle times",
-				section.ContentImage(
-					"/images/code.png",
-					"No YAML, just imperative code",
-				),
+				EscapeYAMLHell(),
 			).Render(templ.WithChildren(ctx, templ_7745c5c3_Var4), templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
@@ -154,7 +151,7 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<p>Read this far and want to see Ocuroot in action? Why not try the quickstart?</p><p><a href=\"https://github.com/ocuroot/quickstart\" class=\"button\">Quickstart <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<p>Read this far and want to see Ocuroot in action? Why not try the quickstart?</p><p><a href=\"https://github.com/ocuroot/quickstart\" class=\"button\" data-vmtrc=\"CTAClick\" data-vmtrc-cta=\"quickstart\">Quickstart <img class=\"btn-icon\" src=\"/icons/github.svg\" alt=\"GitHub\"></a></p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -212,6 +209,96 @@ func GitRepoCard(url string) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "\"><div class=\"repo-loading\">Loading repository information...</div></div>")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func DeclareEnvironments() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var9 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var9 == nil {
+			templ_7745c5c3_Var9 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = code.TerminalCode(
+			"environments.ocu.star",
+			"python",
+			`for i in range(1, 10):
+    register_environment(environment(
+        name=f"dev-{i}",
+        attributes={
+            "type": "dev",
+            "region": "us-east-1",
+        }
+    ))
+
+register_environment(environment(
+    name="staging",
+    attributes={
+        "type": "staging",
+        "region": "eu-west-2",
+    }
+))`,
+		).Render(ctx, templ_7745c5c3_Buffer)
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		return nil
+	})
+}
+
+func EscapeYAMLHell() templ.Component {
+	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
+		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
+		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
+			return templ_7745c5c3_CtxErr
+		}
+		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templruntime.GetBuffer(templ_7745c5c3_W)
+		if !templ_7745c5c3_IsBuffer {
+			defer func() {
+				templ_7745c5c3_BufErr := templruntime.ReleaseBuffer(templ_7745c5c3_Buffer)
+				if templ_7745c5c3_Err == nil {
+					templ_7745c5c3_Err = templ_7745c5c3_BufErr
+				}
+			}()
+		}
+		ctx = templ.InitializeContext(ctx)
+		templ_7745c5c3_Var10 := templ.GetChildren(ctx)
+		if templ_7745c5c3_Var10 == nil {
+			templ_7745c5c3_Var10 = templ.NopComponent
+		}
+		ctx = templ.ClearChildren(ctx)
+		templ_7745c5c3_Err = code.TerminalCode("Terminal",
+			"bash",
+			`$ ocuroot repl frontend/package.ocu.star
+
+Starting Starlark REPL with Ocuroot SDK
+Type Ctrl+D to exit (Ctrl+C will interrupt the current operation)
+Type 'help()' to see available SDK modules
+Loaded repo: quickstart
+Loaded file: frontend/package.ocu.star
+Available user functions: 3
+
+>>> environments()
+[struct(attributes = {"frontend_port": "8080", "type": "staging"}, dict = <function _env_to_dict>, json = <function _env_to_json>, name = "staging")]
+>>> `).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
