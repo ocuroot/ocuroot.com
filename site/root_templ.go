@@ -14,7 +14,12 @@ import (
 	"github.com/ocuroot/ui/js"
 )
 
-func root(path string) templ.Component {
+type RootProps struct {
+	Title string
+	Path  string
+}
+
+func root(props RootProps) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -55,17 +60,17 @@ func root(path string) templ.Component {
 					navbar.NavLink{
 						Name:   "Product",
 						URL:    "/",
-						Active: path == "/",
+						Active: props.Path == "/",
 					},
 					navbar.NavLink{
 						Name:   "Blog",
 						URL:    "/blog",
-						Active: path == "/blog",
+						Active: props.Path == "/blog",
 					},
 					navbar.NavLink{
 						Name:   "Docs",
 						URL:    "/docs",
-						Active: path == "/docs",
+						Active: props.Path == "/docs",
 					},
 					navbar.NavComponent{
 						Component: SocialButtons(),
@@ -110,7 +115,9 @@ func root(path string) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = components.Body().Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.BodyWithProps(components.BodyProps{
+			Title: props.Title,
+		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

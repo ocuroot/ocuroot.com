@@ -6,8 +6,15 @@ import (
 	"github.com/ocuroot/ui/js"
 )
 
-templ root(path string) {
-	@components.Body(){
+type RootProps struct {
+	Title string
+	Path string
+}
+
+templ root(props RootProps) {
+	@components.BodyWithProps(components.BodyProps{
+		Title: props.Title,
+	}){
 		@navbar.Navbar(navbar.NavbarConfig{
 			BrandName:       "Ocuroot",
 			BrandURL:        "/",
@@ -16,17 +23,17 @@ templ root(path string) {
 				navbar.NavLink{
 					Name: "Product",
 					URL:  "/",
-					Active: path == "/",
+					Active: props.Path == "/",
 				},
 				navbar.NavLink{
 					Name: "Blog",
 					URL:  "/blog",
-					Active: path == "/blog",
+					Active: props.Path == "/blog",
 				},
 				navbar.NavLink{
 					Name: "Docs",
 					URL:  "/docs",
-					Active: path == "/docs",
+					Active: props.Path == "/docs",
 				},
 				navbar.NavComponent{
 					Component: SocialButtons(),

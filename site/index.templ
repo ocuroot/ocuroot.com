@@ -6,7 +6,9 @@ import (
 )
 
 templ Index() {
-	@root("/") {
+	@root(RootProps{
+		Path: "/",
+	}) {
 		<!-- Hero Section -->
 		<section class="hero-section">
 			<div class="hero-background">

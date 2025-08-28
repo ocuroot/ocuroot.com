@@ -1,7 +1,10 @@
 package site
 
 templ DemoPage() {
-	@root("/demo") {
+	@root(RootProps{
+		Title: "Book a Demo",
+		Path: "/demo",
+	}) {
 		<!-- Hero Section -->
 		<section class="hero-section">
 			<div class="hero-background">

@@ -3,7 +3,10 @@ package site
 import "fmt"
 
 templ ContactPage() {
-	@root("/contact") {
+	@root(RootProps{
+		Title: "Contact Us",
+		Path: "/contact",
+	}) {
 		<div style="width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1rem;">
 			<h1 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 2rem;">Contact Us</h1>
 			

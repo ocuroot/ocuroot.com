@@ -1,7 +1,10 @@
 package site
 
 templ PrivacyPolicyPage() {
-	@root("/privacy") {
+	@root(RootProps{
+		Title: "Privacy Policy",
+		Path: "/privacy",
+	}) {
 		<section class="features-section">
 			<div class="content-container">
 				<article class="markdown-content">
