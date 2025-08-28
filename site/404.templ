@@ -1,0 +1,16 @@
+package site
+
+templ NotFoundPage() {
+	@root("/404") {
+		<div style="width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1rem; text-align: center;">
+			<h1 style="font-size: 4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">404</h1>
+			<h2 style="font-size: 2rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary);">Page Not Found</h2>
+			<p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.125rem;">
+				The page you're looking for doesn't exist or has been moved.
+			</p>
+			<a href="/" style="color: var(--link-color); text-decoration: none; font-weight: 500; font-size: 1.125rem;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+				← Back to Home
+			</a>
+		</div>
+	}
+}

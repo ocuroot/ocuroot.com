@@ -25,6 +25,7 @@ func main() {
 	r.Register("demo/index.html", site.DemoPage())
 	r.Register("privacy/index.html", site.PrivacyPolicyPage())
 	r.Register("contact/index.html", site.ContactPage())
+	r.Register("404.html", site.NotFoundPage())
 
 	// Initialize and register blog posts
 	blogManager := NewBlogManager()
