@@ -6,7 +6,7 @@ require (
 	github.com/a-h/templ v0.3.943
 	github.com/alecthomas/chroma/v2 v2.20.0
 	github.com/ocuroot/ocuroot v0.0.0-20250825221013-b714c004440f
-	github.com/ocuroot/ui v0.0.12
+	github.com/ocuroot/ui v0.0.13
 	github.com/spf13/cobra v1.9.1
 	github.com/yuin/goldmark v1.7.13
 	github.com/yuin/goldmark-highlighting/v2 v2.0.0-20230729083705-37449abec8cc
