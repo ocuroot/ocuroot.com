@@ -315,9 +315,9 @@ func BlogListPage(posts []*BlogPost) templ.Component {
 						return templ_7745c5c3_Err
 					}
 					var templ_7745c5c3_Var14 templ.SafeURL
-					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + posts[0].Slug))
+					templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + posts[0].Slug + "/"))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/blog.templ`, Line: 120, Col: 53}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/blog.templ`, Line: 120, Col: 59}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 					if templ_7745c5c3_Err != nil {
@@ -468,9 +468,9 @@ func BlogListPage(posts []*BlogPost) templ.Component {
 								return templ_7745c5c3_Err
 							}
 							var templ_7745c5c3_Var23 templ.SafeURL
-							templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + post.Slug))
+							templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinURLErrs(templ.URL("/blog/" + post.Slug + "/"))
 							if templ_7745c5c3_Err != nil {
-								return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/blog.templ`, Line: 160, Col: 51}
+								return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/blog.templ`, Line: 160, Col: 57}
 							}
 							_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 							if templ_7745c5c3_Err != nil {

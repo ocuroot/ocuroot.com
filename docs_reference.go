@@ -21,7 +21,7 @@ import (
 )
 
 func CLIPath(name string) string {
-	return fmt.Sprintf("/reference/cli/%s", name)
+	return fmt.Sprintf("reference/cli/%s", name)
 }
 
 func CLINav() []docnav.NavLink {
@@ -63,7 +63,7 @@ func (dm *DocsManager) LoadCLIPages() error {
 }
 
 func SDKPath(name string) string {
-	return fmt.Sprintf("/reference/sdk/%s", name)
+	return fmt.Sprintf("reference/sdk/%s", name)
 }
 
 func sdkFiles() []string {

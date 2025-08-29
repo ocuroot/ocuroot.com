@@ -122,10 +122,6 @@ Logic for your pipeline structure, builds, deploys and tests are written as func
 a Python-like language that is easy to lint and validate. This means that many syntax
 errors can be caught locally.
 
-Your pipelines can also be verified and previewed rapidly. You can see this in action
-in the [interactive playground](https://playground.ocuroot.com/). Modify the pipeline
-logic or environment list, and see the visualization change in real-time!
-
 Since your scripts can be written in a common, cross-platform language, the Ocuroot CLI tool also allows you to execute them locally. So you can test your build and deployment
 scripts using inputs appropriate to local execution.
 

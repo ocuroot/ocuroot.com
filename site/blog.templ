@@ -117,7 +117,7 @@ templ BlogListPage(posts []*BlogPost) {
 					<div class="hero-blog-layout">
 						if posts[0].CoverImage.Src != "" {
 							<div class="hero-blog-image hero-image-third">
-								<a href={ templ.URL("/blog/" + posts[0].Slug) }>
+								<a href={ templ.URL("/blog/" + posts[0].Slug + "/") }>
 									<img src={ posts[0].CoverImage.Src } alt={ posts[0].CoverImage.Alt } class="hero-cover-image"/>
 								</a>
 							</div>
@@ -157,7 +157,7 @@ templ BlogListPage(posts []*BlogPost) {
 							for i, post := range posts {
 								if i > 0 {
 									<article class="blog-post-card">
-										<a href={ templ.URL("/blog/" + post.Slug) } class="blog-post-link">
+										<a href={ templ.URL("/blog/" + post.Slug + "/") } class="blog-post-link">
 											if post.CoverImage.Src != "" {
 												<div class="blog-post-image">
 													<img src={ post.CoverImage.Src } alt={ post.CoverImage.Alt } class="post-cover-image"/>

@@ -45,6 +45,3 @@ spaghetti!
 To blunt the edges of some of these disadvantages and embrace the nature of living in an imperative world, Ocuroot includes
 features like [pipeline rendering](/blog/07-enabling-pipeline-visualization) and a [REPL](https://docs.ocuroot.com/cli/commands/repl). Future items on the roadmap include a more complete testing suite, so you can verify your shared logic.
 
-## Give it a try!
-
-Ocuroot is currently in a private alpha, but you can try out its Starlark-based configuration today with the [interactive playground](https://playground.ocuroot.com)!

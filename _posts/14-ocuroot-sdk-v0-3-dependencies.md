@@ -15,7 +15,7 @@ ogImage:
   url: "/assets/blog/ocuroot-sdk-v0-3-dependencies/cover.jpg"
 ---
 
-Over the past few months, I've been sharing updates about v0.3.0 of the Ocuroot SDK, focusing on [function chaining](/blog/ocuroot-sdk-v0-3-preview) and [simplified phase definitions](/blog/ocuroot-sdk-v0-3-simplifying-phase-definitions). These help you create a clear
+Over the past few months, I've been sharing updates about v0.3.0 of the Ocuroot SDK, focusing on [function chaining](/blog/oocuroot-sdk-v0-3-canaries/) and [simplified phase definitions](/blog/ocuroot-sdk-v0-3-simplifying-phase-definitions/). These help you create a clear
 release pipeline for a single package, but what if you need to coordinate
 dependencies between multiple packages?
 

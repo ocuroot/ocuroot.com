@@ -141,12 +141,12 @@ func DocsPage(page *DocPage) templ.Component {
 						Links: []docnav.NavLink{
 							{
 								Title:    "CLI",
-								URL:      "/docs/reference/cli",
+								URL:      "#",
 								Children: page.CLINav,
 							},
 							{
 								Title:    "SDK",
-								URL:      "/docs/reference/sdk",
+								URL:      "#",
 								Children: page.SDKNav,
 							},
 						},
