@@ -51,6 +51,9 @@ func DemoPage() templ.Component {
 			Title:     "Book a Demo",
 			Path:      "/demo",
 			Canonical: Canonical("/demo"),
+			Meta: map[string]string{
+				"description": "Book a demo of Ocuroot to see how it can help you with your release orchestration needs.",
+			},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

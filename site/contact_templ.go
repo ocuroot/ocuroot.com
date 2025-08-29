@@ -50,7 +50,7 @@ func ContactPage() templ.Component {
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprint("@ocuroot.com"))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/contact.templ`, Line: 40, Col: 191}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/contact.templ`, Line: 43, Col: 191}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -66,6 +66,9 @@ func ContactPage() templ.Component {
 			Title:     "Contact Us",
 			Path:      "/contact",
 			Canonical: Canonical("/contact"),
+			Meta: map[string]string{
+				"description": "Contact Ocuroot for support or to discuss how we can help with your release orchestration needs.",
+			},
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

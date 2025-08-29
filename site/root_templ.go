@@ -18,6 +18,7 @@ type RootProps struct {
 	Title     string
 	Path      string
 	Canonical string
+	Meta      map[string]string
 }
 
 func root(props RootProps) templ.Component {
@@ -120,6 +121,7 @@ func root(props RootProps) templ.Component {
 			Title:        props.Title,
 			CanonicalURL: props.Canonical,
 			Language:     "en",
+			Meta:         props.Meta,
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

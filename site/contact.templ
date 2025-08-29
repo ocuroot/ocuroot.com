@@ -7,6 +7,9 @@ templ ContactPage() {
 		Title: "Contact Us",
 		Path: "/contact",
 		Canonical: Canonical("/contact"),
+		Meta: map[string]string{
+			"description": "Contact Ocuroot for support or to discuss how we can help with your release orchestration needs.",
+		},
 	}) {
 		<div style="width: 100%; max-width: 64rem; margin: 0 auto; padding: 2rem 1rem;">
 			<h1 style="font-size: 2.25rem; font-weight: 700; margin-bottom: 2rem;">Contact Us</h1>

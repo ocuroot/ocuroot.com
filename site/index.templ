@@ -9,6 +9,9 @@ templ Index() {
 	@root(RootProps{
 		Path: "/",
 		Canonical: Canonical("/"),
+		Meta: map[string]string{
+			"description": "Open source CI / CD orchestration for multi-environment releases",
+		},
 	}) {
 		<!-- Hero Section -->
 		<section class="hero-section">
