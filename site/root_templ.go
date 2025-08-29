@@ -67,12 +67,12 @@ func root(props RootProps) templ.Component {
 					navbar.NavLink{
 						Name:   "Blog",
 						URL:    "/blog",
-						Active: props.Path == "/blog",
+						Active: props.Path == "/blog/",
 					},
 					navbar.NavLink{
 						Name:   "Docs",
 						URL:    "/docs",
-						Active: props.Path == "/docs",
+						Active: props.Path == "/docs/",
 					},
 					navbar.NavComponent{
 						Component: SocialButtons(),

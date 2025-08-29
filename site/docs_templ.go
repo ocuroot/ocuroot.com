@@ -120,19 +120,19 @@ func DocsPage(page *DocPage) templ.Component {
 					{
 						Heading: "Getting Started",
 						Links: []docnav.NavLink{
-							{Title: "Introduction", URL: "/docs"},
-							{Title: "Installation", URL: "/docs/installation"},
-							{Title: "Quickstart", URL: "/docs/quickstart"},
+							{Title: "Introduction", URL: "/docs/"},
+							{Title: "Installation", URL: "/docs/installation/"},
+							{Title: "Quickstart", URL: "/docs/quickstart/"},
 						},
 					},
 					{
 						Heading: "Usage",
 						Links: []docnav.NavLink{
-							{Title: "Releases", URL: "/docs/usage/releases"},
-							{Title: "State", URL: "/docs/usage/state"},
-							{Title: "Dependencies", URL: "/docs/usage/dependencies"},
-							{Title: "Scheduling work", URL: "/docs/usage/scheduling-work"},
-							{Title: "CI Integration", URL: "/docs/usage/ci-integration"},
+							{Title: "Releases", URL: "/docs/usage/releases/"},
+							{Title: "State", URL: "/docs/usage/state/"},
+							{Title: "Dependencies", URL: "/docs/usage/dependencies/"},
+							{Title: "Scheduling work", URL: "/docs/usage/scheduling-work/"},
+							{Title: "CI Integration", URL: "/docs/usage/ci-integration/"},
 							//{Title: "Use with AI tools", URL: "/docs/usage/ai-integration"},
 						},
 					},
