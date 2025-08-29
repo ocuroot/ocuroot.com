@@ -36,6 +36,7 @@ templ BlogPostPage(post *BlogPost) {
 	@root(RootProps{
 		Title: fmt.Sprintf("Blog | %s", post.Title),
 		Path: "/blog",
+		Canonical: Canonical("blog", post.Slug),
 	}) {
 		<!-- Blog Post Header -->
 		<section class="blog-heading">			
@@ -97,6 +98,7 @@ templ BlogListPage(posts []*BlogPost) {
 	@root(RootProps{
 		Title: "Blog",
 		Path: "/blog",
+		Canonical: Canonical("blog"),
 	}) {
 		if len(posts) > 0 {
 			<!-- Hero Post Section -->

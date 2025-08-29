@@ -92,7 +92,7 @@ func DocsPage(page *DocPage) templ.Component {
 					var templ_7745c5c3_Var5 string
 					templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(page.Title)
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 68, Col: 20}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 69, Col: 20}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 					if templ_7745c5c3_Err != nil {
@@ -167,8 +167,9 @@ func DocsPage(page *DocPage) templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = root(RootProps{
-			Title: fmt.Sprintf("%s | Docs", page.Title),
-			Path:  "/docs",
+			Title:     fmt.Sprintf("%s | Docs", page.Title),
+			Path:      "/docs",
+			Canonical: Canonical("docs", page.Path),
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
@@ -205,7 +206,7 @@ func CLIContent(cmd *cobra.Command) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(cmd.Long)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 77, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 78, Col: 29}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -218,7 +219,7 @@ func CLIContent(cmd *cobra.Command) templ.Component {
 		var templ_7745c5c3_Var8 string
 		templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(cmd.UsageString())
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 79, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 80, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 		if templ_7745c5c3_Err != nil {
@@ -241,7 +242,7 @@ func CLIContent(cmd *cobra.Command) templ.Component {
 				var templ_7745c5c3_Var9 string
 				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(subCmd.Name())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 85, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 86, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 				if templ_7745c5c3_Err != nil {
@@ -254,7 +255,7 @@ func CLIContent(cmd *cobra.Command) templ.Component {
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(subCmd.Long)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 86, Col: 34}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 87, Col: 34}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -267,7 +268,7 @@ func CLIContent(cmd *cobra.Command) templ.Component {
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(subCmd.UsageString())
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 88, Col: 26}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `site/docs.templ`, Line: 89, Col: 26}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {

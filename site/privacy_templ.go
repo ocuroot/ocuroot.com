@@ -48,8 +48,9 @@ func PrivacyPolicyPage() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = root(RootProps{
-			Title: "Privacy Policy",
-			Path:  "/privacy",
+			Title:     "Privacy Policy",
+			Path:      "/privacy",
+			Canonical: Canonical("/privacy"),
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

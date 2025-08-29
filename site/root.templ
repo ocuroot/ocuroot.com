@@ -9,11 +9,14 @@ import (
 type RootProps struct {
 	Title string
 	Path string
+	Canonical string
 }
 
 templ root(props RootProps) {
 	@components.BodyWithProps(components.BodyProps{
 		Title: props.Title,
+		CanonicalURL: props.Canonical,
+		Language: "en",
 	}){
 		@navbar.Navbar(navbar.NavbarConfig{
 			BrandName:       "Ocuroot",

@@ -15,8 +15,9 @@ import (
 )
 
 type RootProps struct {
-	Title string
-	Path  string
+	Title     string
+	Path      string
+	Canonical string
 }
 
 func root(props RootProps) templ.Component {
@@ -116,7 +117,9 @@ func root(props RootProps) templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = components.BodyWithProps(components.BodyProps{
-			Title: props.Title,
+			Title:        props.Title,
+			CanonicalURL: props.Canonical,
+			Language:     "en",
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

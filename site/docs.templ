@@ -24,6 +24,7 @@ templ DocsPage(page *DocPage) {
 	@root(RootProps{
 		Title: fmt.Sprintf("%s | Docs", page.Title),
 		Path: "/docs",
+		Canonical: Canonical("docs", page.Path),
 	}) {
 		@docnav.DocNav(docnav.DocNavProps{
 			CurrentPath: fmt.Sprintf("/docs/%s", page.Path),
