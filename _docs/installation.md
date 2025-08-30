@@ -18,6 +18,7 @@ latest release using:
 
 ```bash
 bin install github.com/ocuroot/ocuroot
+```
 
 ## From Source
 
