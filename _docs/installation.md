@@ -6,7 +6,13 @@ path: "installation"
 The Ocuroot client is provided as an open source tool that provides you with everything you
 need to run Ocuroot-enabled releases from your CI platform of choice.
 
-## Binary downloads
+### MacOS (Homebrew)
+
+```bash
+brew install ocuroot/tap/ocuroot
+```
+
+### Binary downloads
 
 URLs for client binaries are available under each release on [GitHub](https://github.com/ocuroot/ocuroot/releases).
 
