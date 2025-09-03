@@ -48,12 +48,10 @@ func PrivacyPolicyPage() templ.Component {
 			return nil
 		})
 		templ_7745c5c3_Err = root(RootProps{
-			Title:     "Privacy Policy",
-			Path:      "/privacy",
-			Canonical: Canonical("/privacy"),
-			Meta: map[string]string{
-				"description": "Ocuroot's privacy policy document, outlining how we handle user data.",
-			},
+			Title:       "Privacy Policy",
+			Path:        "/privacy",
+			Canonical:   Canonical("/privacy"),
+			Description: "Ocuroot's privacy policy document, outlining how we handle user data.",
 		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err

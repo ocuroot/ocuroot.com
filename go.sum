@@ -99,8 +99,8 @@ github.com/ocuroot/gittools v0.0.8 h1:neZ+M8ODhKPxKWAZlAQPPQ0TzQm83qzlq8iAxos0a8
 github.com/ocuroot/gittools v0.0.8/go.mod h1:P1JPg9N9xTbmew7IjgmGDeBAk9K4I/vcWsLRXBiEQF8=
 github.com/ocuroot/ocuroot v0.3.10 h1:TmdZrQ5/vOfKTbtEr+LRiPgxSq3fA62KaTamvf3Clug=
 github.com/ocuroot/ocuroot v0.3.10/go.mod h1:dDeQw96F2efnq/uG/thK19ZPtIXpjJBmfTw+wFId7q4=
-github.com/ocuroot/ui v0.0.18 h1:I2zTmwwk9lpRaij18vnwVUNLDeYINRUwnymVvlqi4bg=
-github.com/ocuroot/ui v0.0.18/go.mod h1:/vmuh1eGJDnQcTxosxxj8cLxAva9OAaQiWSOC8vSFUg=
+github.com/ocuroot/ui v0.0.19 h1:zS4mzQn63tBn4nHNyULeC9oA1rU1QBZF9HxK7xUE+7g=
+github.com/ocuroot/ui v0.0.19/go.mod h1:/vmuh1eGJDnQcTxosxxj8cLxAva9OAaQiWSOC8vSFUg=
 github.com/oklog/ulid/v2 v2.1.1 h1:suPZ4ARWLOJLegGFiZZ1dFAkqzhMjL3J1TzI+5wHz8s=
 github.com/oklog/ulid/v2 v2.1.1/go.mod h1:rcEKHmBBKfef9DhnvX7y1HZBYxjXb0cP5ExxNsTT1QQ=
 github.com/pborman/getopt v0.0.0-20170112200414-7148bc3a4c30/go.mod h1:85jBQOZwpVEaDAr341tbn15RS4fCAsIst0qp7i8ex1o=

@@ -21,6 +21,7 @@ func main() {
 	r.Register("favicon.ico", StaticComponent(assets.Favicon))
 	r.Register("static/anon_user.svg", StaticComponent(assets.AnonUser))
 	r.Register("static/logo.svg", StaticComponent(assets.Logo))
+	r.Register("static/social.svg", StaticComponent(assets.Social))
 	r.Register("index.html", site.Index())
 	r.Register("demo/index.html", site.DemoPage())
 	r.Register("privacy/index.html", site.PrivacyPolicyPage())

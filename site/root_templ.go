@@ -15,10 +15,46 @@ import (
 )
 
 type RootProps struct {
-	Title     string
-	Path      string
-	Canonical string
-	Meta      map[string]string
+	Title       string
+	Path        string
+	Canonical   string
+	Description string
+
+	Image    string
+	ImageAlt string
+	Type     string
+}
+
+func RootToComponentProps(props RootProps) components.BodyProps {
+	out := components.BodyProps{
+		Title:        props.Title,
+		CanonicalURL: props.Canonical,
+		Language:     "en",
+		Meta:         map[string]string{},
+	}
+
+	if props.Description != "" {
+		out.Meta["description"] = props.Description
+	}
+
+	out.SocialCard = &components.SocialCard{
+		Description: props.Description,
+		Type:        "website",
+		SiteName:    "Ocuroot",
+		Image:       Canonical("/static/social.svg"),
+		ImageAlt:    "The word 'Ocuroot' next to the Ocuroot logo on a green and black background",
+	}
+
+	if props.Image != "" {
+		out.SocialCard.Image = Canonical(props.Image)
+		out.SocialCard.ImageAlt = props.ImageAlt
+	}
+
+	if props.Type != "" {
+		out.SocialCard.Type = props.Type
+	}
+
+	return out
 }
 
 func root(props RootProps) templ.Component {
@@ -117,12 +153,7 @@ func root(props RootProps) templ.Component {
 			}
 			return nil
 		})
-		templ_7745c5c3_Err = components.BodyWithProps(components.BodyProps{
-			Title:        props.Title,
-			CanonicalURL: props.Canonical,
-			Language:     "en",
-			Meta:         props.Meta,
-		}).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = components.BodyWithProps(RootToComponentProps(props)).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

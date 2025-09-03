@@ -37,9 +37,11 @@ templ BlogPostPage(post *BlogPost) {
 		Title: fmt.Sprintf("Blog | %s", post.Title),
 		Path: "/blog",
 		Canonical: Canonical("blog", post.Slug),
-		Meta: map[string]string{
-			"description": post.Excerpt,
-		},
+		
+		Description: post.Excerpt,
+		Image: post.CoverImage.Src,
+		ImageAlt: post.CoverImage.Alt,
+		Type: "article",
 	}) {
 		<!-- Blog Post Header -->
 		<section class="blog-heading">			
@@ -102,9 +104,8 @@ templ BlogListPage(posts []*BlogPost) {
 		Title: "Blog",
 		Path: "/blog",
 		Canonical: Canonical("blog"),
-		Meta: map[string]string{
-			"description": "The Ocuroot blog, following development of a flexible, YAML-free CI/CD solution.",
-		},
+		Description: "The Ocuroot blog, following development of a flexible, YAML-free CI/CD solution.",
+		Type: "website",
 	}) {
 		if len(posts) > 0 {
 			<!-- Hero Post Section -->
