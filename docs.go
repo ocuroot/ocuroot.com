@@ -7,13 +7,7 @@ import (
 	"path"
 	"path/filepath"
 
-	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/ocuroot/templbuildr/site"
-	"github.com/yuin/goldmark"
-	highlighting "github.com/yuin/goldmark-highlighting/v2"
-	"github.com/yuin/goldmark/extension"
-	"github.com/yuin/goldmark/parser"
-	"github.com/yuin/goldmark/renderer/html"
 )
 
 // DocPage represents a parsed documentation page
@@ -33,38 +27,6 @@ func NewDocsManager() *DocsManager {
 	return &DocsManager{
 		parser: NewParser[DocPage](),
 		pages:  make(map[string]*Content[DocPage]),
-	}
-}
-
-// DocsParser handles parsing markdown files with YAML frontmatter
-type DocsParser struct {
-	markdown goldmark.Markdown
-}
-
-// NewDocsParser creates a new docs parser
-func NewDocsParser() *DocsParser {
-	md := goldmark.New(
-		goldmark.WithExtensions(
-			extension.GFM,
-			highlighting.NewHighlighting(
-				highlighting.WithStyle("github"),
-				highlighting.WithFormatOptions(
-					chromahtml.WithClasses(true),
-				),
-			),
-		),
-		goldmark.WithParserOptions(
-			parser.WithAutoHeadingID(),
-		),
-		goldmark.WithRendererOptions(
-			html.WithUnsafe(),
-			// html.WithHardWraps(),
-			html.WithXHTML(),
-		),
-	)
-
-	return &DocsParser{
-		markdown: md,
 	}
 }
 
