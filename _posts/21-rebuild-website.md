@@ -54,8 +54,8 @@ be rendered as a component:
 type StaticComponent []byte
 
 func (s StaticComponent) Render(ctx context.Context, w io.Writer) error {
-	_, err := w.Write(s)
-	return err
+  _, err := w.Write(s)
+  return err
 }
 ```
 
@@ -138,7 +138,7 @@ ocuroot release new release.ocu.star
 # ... Pause for feedback on staging site ...
 
 # Approve deploy to production
-ocuroot state set release.ocu.star/+11/custom/approval 1
+ocuroot state set release.ocu.star/+r11/custom/approval 1
 
 # Execute work to deploy to production
 ocuroot work any
