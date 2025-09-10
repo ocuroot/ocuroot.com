@@ -24,20 +24,8 @@ For example, the following ref would refer to the container image for the first 
 of the "frontend" Package in an example repo:
 
 ```
-github.com/ocuroot/example/-/frontend/release.ocu.star/@1/call/build#output/image
+github.com/ocuroot/example/-/frontend/release.ocu.star/@r1/call/build#output/image
 ```
-
-## State vs. Intent
-
-Intent References are denoted by the use of `+` instead of `@` for the Release. So the below ref would refer
-to the desired state for deploying the "frontend" Package to the "production" Environment.
-
-```
-github.com/ocuroot/example/-/frontend/release.ocu.star/+/deploy/production
-```
-
-All manual changes to state must be made by first modifying intent. Ocuroot will then identify the appropriate
-actions to take to apply this intent to current state.
 
 ## State Storage
 
@@ -65,7 +53,7 @@ To configure a *git* backend:
 ```python
 store.set(
     store.git("https://github.com/example/ocuroot-state.git", branch="state"),
-    intent=store.git("https://github.com/example/ocuroot-intent.git", branch="intent"),
+    intent=store.git("https://github.com/example/ocuroot-state.git", branch="intent"),
 )
 ```
 
@@ -115,13 +103,12 @@ By default, the UI is hosted at [http://localhost:3000](http://localhost:3000).
 
 ### ocuroot state set
 
-The `set` command allows you to set the content of the document at a specific ref.
-The ref must be an intent ref (e.g. `repo/-/release.ocu.star/+/custom/approve`), which can be
-synchronized to state via the `ocuroot state apply` or `ocuroot work any` commands. 
+The `set` command allows you to set the content of the document of a specific ref in the intent store.
+This intent must then be applied to state via the `ocuroot state apply` or `ocuroot work any` commands. 
 
 ### ocuroot state delete
 
-Similar to `ocuroot state set`, the `delete` command allows you to delete the document at a specific intent ref.
+Similar to `ocuroot state set`, the `delete` command allows you to delete a document from the intent store.
 
 ## Types of state
 
@@ -140,13 +127,12 @@ An Environment document must contain the same name as the ref, and a map of `att
 You can create an environment from the command-line by setting the intent using the JSON format:
 
 ```bash
-$ ocuroot state set -f=json "+/environment/production" '{"attributes": {"type": "prod"},"name": "production"}'
+$ ocuroot state set -f=json "@/environment/production" '{"attributes": {"type": "prod"},"name": "production"}'
 ```
 
 Once this intent is applied, the environment will be created and populated with any appropriate deployments.
 
-You can also delete an environment with `ocuroot state delete`, which will destroy any deployments before removing
-the environment from state.
+You can also delete an environment with `ocuroot state delete`, which will destroy any deployments before removing the environment from state.
 
 ### Releases
 
@@ -171,51 +157,51 @@ The hash is stored in the ref itself for quick lookup.
 This allows you to look up the commit for a specific release:
 
 ```bash
-$ ocuroot state match github.com/ocuroot/example/-/release.ocu.star/@1/commit/*
+$ ocuroot state match github.com/ocuroot/example/-/release.ocu.star/@r1/commit/*
 ```
 
 Or even find all releases at a specific commit:
 
 ```bash
 $ ocuroot state match github.com/ocuroot/example/-/**/@*/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
-github.com/ocuroot/example/-/frontend/release.ocu.star/@1/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
-github.com/ocuroot/example/-/backend/release.ocu.star/@1/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
-github.com/ocuroot/example/-/frontend/release.ocu.star/@2/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
+github.com/ocuroot/example/-/frontend/release.ocu.star/@r1/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
+github.com/ocuroot/example/-/backend/release.ocu.star/@r1/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
+github.com/ocuroot/example/-/frontend/release.ocu.star/@r2/commit/fa56a23554a75a7ab334f841c5f61f952e52930c
 ```
 
 Note that there can be multiple releases at a single commit.
 
-### Work
+### Tasks
 
-Work within a Release is represented as either *Calls* or *Deployments* below the Release Ref.
+Work within a Release is represented as Tasks below the Release Ref.
 
-A Call represents a one-off step within a Release, like a build or test. Call refs are of the form:
+A basic Task represents a one-off step within a Release, like a build or test. Task refs are of the form:
 
 ```
-github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/call/[name]
+github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/task/[name]
 ```
 
-A Deployment represents a release of a package to a specific environment. Deployment refs are of the form:
+A Deployment is a special kind of task that represents a release of a package to a specific environment. Deployment refs are of the form:
 
 ```
 github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/deploy/[environment]
 ```
 
-Below Call and Deployment Refs will be details of each execution of the work. These are numbered sequentially
+Below Task Refs will be details of each Run. These are numbered sequentially
 and will have a single status ref associated with them to make it easy to match against work with a specific result.
 
 For example:
 
 ```
-github.com/ocuroot/example/-/release.ocu.star/@1/call/build/1/status/complete
+github.com/ocuroot/example/-/release.ocu.star/@r1/task/build/1/status/complete
 ```
 
-Shows that the first execution of the build call in release 1 of the package at `release.ocu.star` was completed successfully.
+Shows that the first execution of the build task in release r1 of the package at `release.ocu.star` was completed successfully.
 
 The logs for this execution are also available at:
 
 ```
-github.com/ocuroot/example/-/release.ocu.star/@1/call/build/1/logs
+github.com/ocuroot/example/-/release.ocu.star/@r1/task/build/1/logs
 ```
 
 ### Custom State
@@ -233,5 +219,5 @@ Custom State may be stored globally:
 Or scoped to a specific release:
 
 ```
-github.com/ocuroot/example/-/path/to/package/release.ocu.star/@1/custom/[name]
+github.com/ocuroot/example/-/path/to/package/release.ocu.star/@r1/custom/[name]
 ```

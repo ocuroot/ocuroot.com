@@ -14,8 +14,8 @@ is performed on a Release and describes the order of operations.
 ```python
 ocuroot("0.3.0")
 
-def build(ctx):
-    build_number = ctx.inputs.prev_build_number + 1
+def build(prev_build_number):
+    build_number = prev_build_number + 1
     print("Building build {}...".format(build_number))
     tag = "myapp:{}".format(build_number)
 
@@ -31,7 +31,7 @@ def build(ctx):
         }
     )
 
-call(
+task(
     build, 
     name="build"
     inputs={
@@ -41,18 +41,18 @@ call(
     }
 )
 
-def up(ctx):
-    host.shell("./deploy.sh {} {}".format(ctx.inputs.tag, ctx.environment.name))
-    host.shell("./test.sh {}".format(ctx.environment.name))
+def up(tag, environment):
+    host.shell("./deploy.sh {} {}".format(tag, environment["name"]))
+    host.shell("./test.sh {}".format(environment["name"]))
     return done()
 
-def down(ctx):
-    host.shell("./undeploy.sh {}".format(ctx.environment.name))
+def down(environment):
+    host.shell("./undeploy.sh {}".format(environment["name"]))
     return done()
 
 phase(
     "staging",
-    work=[
+    tasks=[
        deploy(
             up=up,
             down=down,
@@ -60,6 +60,8 @@ phase(
             inputs={
                 # Get the tag from this build in this release
                 "tag": input(ref="./call/build#output/tag"),
+                
+                # Note: The environment is passed in as a dictionary by default
             },
         # Deploy to all staging environments
         ) for e in environments() if e.attributes["type"] == "staging"
@@ -68,7 +70,7 @@ phase(
 
 phase(
     "production",
-    work=[
+    tasks=[
         deploy(
             up=up,
             down=down,
@@ -86,19 +88,17 @@ phase(
 In this example, we define a simple release process that builds a docker container, then deploys it to all staging
 environments, followed by all production environments.
 
-Work within phases is defined as either a `call`, which is not associated with an environment, or a `deploy`, which is.
-It is assumed that deploy work is idempotent, and will replace any existing deployments for this config file within
-the specified environment.
+Work within phases is defined as either a `task`, which is not associated with an environment, or a `deploy`, which is.
+It is assumed that deploy work is idempotent, and will replace any existing deployments for this config file within the specified environment.
 
-Calls have a `fn` function which is called to execute the call.
+Tasks have a `fn` function which is called to execute the task.
 
 Deploys always have an `up` and `down` function, which define the steps to perform when deploying and undeploying to an environment.
 
-These functions all receive a `ctx` parameter, which contains all context for the function, most notably `inputs` as
-defined in the work declaration.
+These functions all receive parameters defined by the `inputs` dictionary of the task/deploy definition.
 
-The `phase` function is a way to group together related work. Any work in a phase may execute in parallel. Each phase is executed in the order defined in the `*.ocu.star` file. If a `call` or `deploy` is defined outside of a
-`phase`, it will be run in-order as if it were in a phase with only one work item.
+The `phase` function is a way to group together related work. Any work in a phase may execute in parallel. Each phase is executed in the order defined in the `*.ocu.star` file. If a `task` or `deploy` is defined outside of a
+`phase`, it will be executed in-order as if it were in a phase with only one work item.
 
 ## Starting a New Release
 
@@ -140,7 +140,7 @@ Which will retry the failed work for the most recent Release of this Package.
 You can also specify a Release explicitly:
 
 ```bash
-ocuroot release retry path/to/release.ocu.star/@1
+ocuroot release retry path/to/release.ocu.star/@r1
 ```
 
-Where `@1` is the Release number in question.
+Where `@r1` is the Release number in question.

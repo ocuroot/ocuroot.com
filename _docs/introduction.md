@@ -26,11 +26,26 @@ The following are represented in state:
 * **Packages** represent resources or services that can be deployed. They are defined by Ocuroot config files.
 * **Releases** are snapshots of packages at a particular commit. They track the process of building, testing and deploying the package according to your configuration.
 * **Environments** define locations where releases are deployed
-* **Deployments** represent a specific release being deployed to an environment
+* **Tasks** are scripted work to be executed as part of a release, defined by Starlark functions.
+* **Deployments** are a special kind of Task to deploy a release to a specific environment. They are defined by two functions, an "up" function to deploy the release, and a "down" function to remove it from the environment.
+* **Runs** are a single execution of a Task, which have a result and logs.
 * **Custom State** allows you to pass data into releases and deployments without having to modify code
 
 Environments, Deployments and Custom State have intent equivalents so they can be manually modified.
 Releases are entirely managed by Ocuroot based on the contents of your source repo.
+
+```mermaid
+graph TD;
+Repository -- contains --> Package
+Package -- released by --> Release
+Release -- achieved through --> Task
+Task -- executed by --> Run
+Release -- achieved through --> Deployment
+Deployment -- deploys to --> Environment
+Deployment -- executed by --> Run
+
+Custom -- consumed by --> Run
+```
 
 ## Architecture
 

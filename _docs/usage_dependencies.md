@@ -13,23 +13,27 @@ or Deployment has a set of Inputs and Outputs that can be connected with the Inp
 
 ## Declaring Inputs
 
-Both the `call` and `deploy` functions accept an `inputs` parameter, which is a dictionary of input names to
+The `task` and `deploy` functions to declare Tasks accept an `inputs` parameter, which is a dictionary of
 either static values, `ref`, or `input` objects.
 
 For example, the below creates an input called `image_tag` that is populated from the `tag` output of the
 most recent `build` call:
 
 ```python
-inputs={
-    "image_tag": ref("./@/call/build#output/tag"),
-},
+task(
+    security_scan,
+    name="security_scan",
+    inputs={
+        "image_tag": ref("./@/task/build#output/tag"),
+    },
+)
 ```
 
 The ref is declared as relative to the current config file. The fragment `#output/tag` will point directly to the
 tag value in the outputs from this build. These outputs would have been returned from the build function:
 
 ```python
-def build(ctx):
+def build():
     # ...
     tag = "myapp:{}".format(build_number)
     return done(
@@ -49,6 +53,16 @@ inputs={
 ```
 
 Note the lack of an `@` portion in the ref above. This is because it is relative to the release where it is evaluated.
+
+## Using inputs
+
+Inputs are provided as arguments to the task function. For the task above, for example:
+
+```python
+def security_scan(image_tag):
+    shell("scan.sh {}".format(image_tag))
+    return done()
+```
 
 ## How Dependencies are Resolved
 

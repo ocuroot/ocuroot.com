@@ -5,7 +5,7 @@ go 1.24.2
 require (
 	github.com/a-h/templ v0.3.943
 	github.com/alecthomas/chroma/v2 v2.20.0
-	github.com/ocuroot/ocuroot v0.3.10
+	github.com/ocuroot/ocuroot v0.3.11
 	github.com/ocuroot/ui v0.0.19
 	github.com/spf13/cobra v1.9.1
 	github.com/yuin/goldmark v1.7.13
@@ -47,7 +47,7 @@ require (
 	github.com/muesli/ansi v0.0.0-20230316100256-276c6243b2f6 // indirect
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/termenv v0.16.0 // indirect
-	github.com/ocuroot/gittools v0.0.8 // indirect
+	github.com/ocuroot/gittools v0.0.9 // indirect
 	github.com/oklog/ulid/v2 v2.1.1 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/spf13/cast v1.9.2 // indirect

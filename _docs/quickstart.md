@@ -73,7 +73,7 @@ This should output something like this:
 ```bash
 ✓ build (30.399s)
   Outputs
-  └── quickstart/-/frontend/package.ocu.star/@1/call/build#output/image
+  └── quickstart/-/frontend/package.ocu.star/@r1/call/build#output/image
       └── quickstart-frontend:latest
 › deploy to staging
   Pending Inputs

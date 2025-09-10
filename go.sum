@@ -95,10 +95,10 @@ github.com/muesli/cancelreader v0.2.2 h1:3I4Kt4BQjOR54NavqnDogx/MIoWBFa0StPA8ELU
 github.com/muesli/cancelreader v0.2.2/go.mod h1:3XuTXfFS2VjM+HTLZY9Ak0l6eUKfijIfMUZ4EgX0QYo=
 github.com/muesli/termenv v0.16.0 h1:S5AlUN9dENB57rsbnkPyfdGuWIlkmzJjbFf0Tf5FWUc=
 github.com/muesli/termenv v0.16.0/go.mod h1:ZRfOIKPFDYQoDFF4Olj7/QJbW60Ol/kL1pU3VfY/Cnk=
-github.com/ocuroot/gittools v0.0.8 h1:neZ+M8ODhKPxKWAZlAQPPQ0TzQm83qzlq8iAxos0a8s=
-github.com/ocuroot/gittools v0.0.8/go.mod h1:P1JPg9N9xTbmew7IjgmGDeBAk9K4I/vcWsLRXBiEQF8=
-github.com/ocuroot/ocuroot v0.3.10 h1:TmdZrQ5/vOfKTbtEr+LRiPgxSq3fA62KaTamvf3Clug=
-github.com/ocuroot/ocuroot v0.3.10/go.mod h1:dDeQw96F2efnq/uG/thK19ZPtIXpjJBmfTw+wFId7q4=
+github.com/ocuroot/gittools v0.0.9 h1:SPnw3GA8NpzCbxNewwCjjSYHFusUS2PGVsAgyq0hUx8=
+github.com/ocuroot/gittools v0.0.9/go.mod h1:P1JPg9N9xTbmew7IjgmGDeBAk9K4I/vcWsLRXBiEQF8=
+github.com/ocuroot/ocuroot v0.3.11 h1:0zouSzQZB/I3pZg3ohfLJadWLJoVsShjuj7GDduPsVw=
+github.com/ocuroot/ocuroot v0.3.11/go.mod h1:Z5vlTQTnpKRDNBJzBrZuwEWFUNpicp7E4b2WEEqnulA=
 github.com/ocuroot/ui v0.0.19 h1:zS4mzQn63tBn4nHNyULeC9oA1rU1QBZF9HxK7xUE+7g=
 github.com/ocuroot/ui v0.0.19/go.mod h1:/vmuh1eGJDnQcTxosxxj8cLxAva9OAaQiWSOC8vSFUg=
 github.com/oklog/ulid/v2 v2.1.1 h1:suPZ4ARWLOJLegGFiZZ1dFAkqzhMjL3J1TzI+5wHz8s=
