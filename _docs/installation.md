@@ -12,19 +12,50 @@ need to run Ocuroot-enabled releases from your CI platform of choice.
 brew install ocuroot/tap/ocuroot
 ```
 
-### Binary downloads
+### Linux (Package Managers)
 
-URLs for client binaries are available under each release on [GitHub](https://github.com/ocuroot/ocuroot/releases).
+> **Note:** Check the [releases page](https://github.com/ocuroot/ocuroot/releases) to find the latest version number and available architectures.
 
-Note that these binaries are currently not signed, so on macOS you will either need to download via `curl` or `wget`
-or allow the unsigned binary in Settings.
+#### Debian/Ubuntu (.deb)
 
-You can also use the excellent [bin](https://github.com/marcosnils/bin) tool to install direct from the
-latest release using:
+Download and install the `.deb` package from the [releases page](https://github.com/ocuroot/ocuroot/releases):
+
+```bash
+# Download the package (replace $VERSION and $ARCH as needed)
+wget https://github.com/ocuroot/ocuroot/releases/download/v$VERSION/ocuroot_$VERSION_$ARCH.deb
+
+# Install the package
+sudo dpkg -i ocuroot_$VERSION_$ARCH.deb
+
+# Fix dependencies if needed
+sudo apt-get install -f
+```
+
+#### RHEL/CentOS/Fedora (.rpm)
+
+Download and install the `.rpm` package from the [releases page](https://github.com/ocuroot/ocuroot/releases):
+
+```bash
+# Download the package (replace $VERSION and $ARCH as needed)
+wget https://github.com/ocuroot/ocuroot/releases/download/v$VERSION/ocuroot_$VERSION_$ARCH.rpm
+
+# Install the package
+sudo rpm -i ocuroot_$VERSION_$ARCH.rpm
+
+# Or using dnf/yum
+sudo dnf install ocuroot_$VERSION_$ARCH.rpm
+```
+
+### Using bin
+
+You can use the excellent [bin](https://github.com/marcosnils/bin) tool to install directly from the latest GitHub release:
 
 ```bash
 bin install github.com/ocuroot/ocuroot
 ```
+
+This automatically downloads the correct binary for your platform from the [releases page](https://github.com/ocuroot/ocuroot/releases).
+
 
 ## From Source
 
