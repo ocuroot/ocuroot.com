@@ -5,7 +5,7 @@ go 1.24.2
 require (
 	github.com/a-h/templ v0.3.943
 	github.com/alecthomas/chroma/v2 v2.20.0
-	github.com/ocuroot/ocuroot v0.3.11
+	github.com/ocuroot/ocuroot v0.3.13
 	github.com/ocuroot/ui v0.0.19
 	github.com/spf13/cobra v1.9.1
 	github.com/yuin/goldmark v1.7.13
