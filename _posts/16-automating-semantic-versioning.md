@@ -165,8 +165,6 @@ phase(
         inputs={
             "approval": input(
                 ref=promotion_ref,
-                doc="""Manually promote this release by running 
-        ocuroot state set \"{ref}\" 1"""".format(ref=promotion_ref["ref"].replace("@", "+")),
             ),
 
         }    
