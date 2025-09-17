@@ -18,13 +18,13 @@ You will need the following installed on your local machine:
 
 * Docker
 * Git
-* Ocuroot client - see [installation instructions](/docs/installation/)
+* Ocuroot client - see [installation instructions](https://github.com/ocuroot/ocuroot?tab=readme-ov-file#installation)
 
 ## Instructions
 
 ### 0. Clone the quickstart repository
 
-We'll be working on a local copy of the [quickstart repo](https://github.com/ocuroot/quickstart), so you'll need to clone it.
+We'll be working on a local copy of the quickstart repo, so you'll need to clone it.
 
 ```bash
 git clone https://github.com/ocuroot/quickstart.git
@@ -57,7 +57,7 @@ $ ocuroot state get @/environment/staging
 }
 ```
 
-For the purposes of the quickstart, state is stored locally in the `.store` directory.
+For the purposes of this quickstart, state is stored locally in the `.store` directory.
 
 ### 2. Release the frontend
 
@@ -73,7 +73,7 @@ This should output something like this:
 ```bash
 ✓ build (30.399s)
   Outputs
-  └── quickstart/-/frontend/package.ocu.star/@r1/call/build#output/image
+  └── quickstart/-/frontend/package.ocu.star/@1/call/build#output/image
       └── quickstart-frontend:latest
 › deploy to staging
   Pending Inputs
@@ -113,6 +113,18 @@ ocuroot release new message-service/package.ocu.star
 
 Once complete, go back to the frontend and you'll see messages from these services.
 
+### 4a. View state
+
+We now have a fully populated staging environment! Ocuroot also includes a web UI to view your
+state. You can start it by running:
+
+```bash
+ocuroot state view
+```
+
+This will start a local server showing the contents of your state store. Once started, open a browser to
+http://localhost:3000 and take a look around.
+
 ### 5. Add a production environment
 
 Now we have our staging environment fully populated and visually tested, we can
@@ -134,11 +146,11 @@ Then release these changes and deploy all services.
 
 ```bash
 ocuroot release new environments.ocu.star
-ocuroot work any
-ocuroot work any
+ocuroot work any --comprehensive
 ```
 
-The second `ocuroot work any` call is needed to handle the dependency between `frontend` and `network`.
+The use of the `--comprehensive` flag ensures that follow-on work created by dependencies is handled
+without having to run `ocuroot work any` more than once.
 
 Once this is complete, you'll be able to load the production frontend at http://localhost:8081, 
 there should be a line on the page indicating that the environment is "production".
@@ -154,21 +166,87 @@ docker ps -f name=^quickstart- --format "{{.Names}}"
 
 You'll see containers for both production and staging.
 
-Let's clean up after ourselves, first off, we'll delete our production environment. We'll do this
-by removing it from our intent, and executing work to synchronize to actual state.
+Let's clean up after ourselves, first off, we'll delete our production environment.
+First, let's delete the intent.
 
 ```bash
-ocuroot state delete +/environment/production
+ocuroot state delete @/environment/production
+```
+
+Now we can run `ocuroot work any` to actually perform the deletion, but first, let's look at what it's about
+to do with the `--dryrun` flag.
+
+```bash
+ocuroot work any --dryrun
+```
+
+This outputs something like:
+
+```json
+[
+  {
+    "ref": "@/environment/staging",
+    "work_type": "delete"
+  }
+]
+```
+
+Which indicates that we're going to delete the realized state of the staging environment.
+Once we do this, it will schedule all the work necessary to clean up afterwards.
+
+So let's execute that deletion and then see what work is outstanding after.
+
+```bash
 ocuroot work any
+ocuroot work any --dryrun
+```
+
+```json
+[
+  {
+    "ref": "quickstart/-/frontend/package.ocu.star/@r1/deploy/staging/2",
+    "work_type": "run",
+    "commit": "a0c4e0047eff4405a624ac2dfbfa82ed8e90259e"
+  },
+  {
+    "ref": "quickstart/-/message-service/package.ocu.star/@r1/deploy/staging/2",
+    "work_type": "run",
+    "commit": "a0c4e0047eff4405a624ac2dfbfa82ed8e90259e"
+  },
+  {
+    "ref": "quickstart/-/network/package.ocu.star/@r1/deploy/staging/2",
+    "work_type": "run",
+    "commit": "a0c4e0047eff4405a624ac2dfbfa82ed8e90259e"
+  },
+  {
+    "ref": "quickstart/-/time-service/package.ocu.star/@r1/deploy/staging/2",
+    "work_type": "run",
+    "commit": "a0c4e0047eff4405a624ac2dfbfa82ed8e90259e"
+  },
+  {
+    "ref": "quickstart/-/weather-service/package.ocu.star/@r1/deploy/staging/2",
+    "work_type": "run",
+    "commit": "a0c4e0047eff4405a624ac2dfbfa82ed8e90259e"
+  }
+]
+```
+
+Now we have the work scheduled to run, let's execute it.
+
+```bash
+ocuroot work any --comprehensive
 ```
 
 If you run the `docker ps` command above again, you'll only see the staging containers. 
 See if you can adapt the above commands to delete the staging environment as well.
 
+You can also look at the state with `ocuroot state view` and you will see that there are
+no environments listed, although there is a full record of all historical deployments.
+
 ## Next steps
 
 This was just a taste of what you can do with Ocuroot, and there's plenty more to explore even
-within the quickstart repo! Feel free to have a look around to see how everything's configured. You could
+within this repo! Feel free to have a look around to see how everything's configured. You could
 also try:
 
 * Deploying a change to the messages service
