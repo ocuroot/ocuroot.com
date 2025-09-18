@@ -7,7 +7,9 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
+	"github.com/gorilla/feeds"
 	"github.com/ocuroot/templbuildr/site"
 	"github.com/ocuroot/ui/css"
 
@@ -168,6 +170,10 @@ func (bm *BlogManager) RegisterWithRenderer(r *ConcreteRenderer) {
 		path := fmt.Sprintf("blog/%s/index.html", slug)
 		r.Register(path, &BlogComponent{Post: post})
 	}
+
+	if err := bm.RegisterFeeds(r); err != nil {
+		fmt.Println(err)
+	}
 }
 
 // GetPost returns a blog post by slug
@@ -179,4 +185,41 @@ func (bm *BlogManager) GetPost(slug string) (*Content[BlogPost], bool) {
 // GetAllPosts returns all posts sorted by date (newest first)
 func (bm *BlogManager) GetAllPosts() []*Content[BlogPost] {
 	return bm.sorted
+}
+
+func (bm *BlogManager) RegisterFeeds(r *ConcreteRenderer) error {
+	feed := &feeds.Feed{
+		Title:       "Ocuroot Blog",
+		Link:        &feeds.Link{Href: "https://www.ocuroot.com/blog"},
+		Description: "Updates on development of Ocuroot, a CI/CD tool for managing large numbers of environments",
+		Author:      &feeds.Author{Name: "Tom Elliott", Email: "tom@ocuroot.com"},
+		Created:     time.Now(),
+	}
+
+	for index, post := range bm.sorted {
+		// Limit to 20 entries to keep the file small
+		if index == 20 {
+			break
+		}
+		feed.Items = append(feed.Items, &feeds.Item{
+			Title:       post.FrontMatter.Title,
+			Link:        &feeds.Link{Href: fmt.Sprintf("https://www.ocuroot.com/blog/%s", post.FrontMatter.Slug)},
+			Description: post.FrontMatter.Excerpt,
+			Author:      &feeds.Author{Name: "Tom Elliott", Email: "tom@ocuroot.com"},
+			Created:     post.Date,
+		})
+	}
+
+	atom, err := feed.ToAtom()
+	if err != nil {
+		return fmt.Errorf("failed to generate atom feed: %w", err)
+	}
+	r.Register("blog/atom.xml", StringComponent(atom))
+
+	rss, err := feed.ToRss()
+	if err != nil {
+		return fmt.Errorf("failed to generate rss feed: %w", err)
+	}
+	r.Register("blog/rss.xml", StringComponent(rss))
+	return nil
 }

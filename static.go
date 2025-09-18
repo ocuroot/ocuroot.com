@@ -24,3 +24,10 @@ func (s StaticFileComponent) Render(ctx context.Context, w io.Writer) error {
 	_, err = w.Write(data)
 	return err
 }
+
+type StringComponent string
+
+func (s StringComponent) Render(ctx context.Context, w io.Writer) error {
+	_, err := w.Write([]byte(s))
+	return err
+}

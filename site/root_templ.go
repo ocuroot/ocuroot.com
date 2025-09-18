@@ -23,6 +23,9 @@ type RootProps struct {
 	Image    string
 	ImageAlt string
 	Type     string
+
+	RSS  string
+	Atom string
 }
 
 func RootToComponentProps(props RootProps) components.BodyProps {
@@ -35,6 +38,22 @@ func RootToComponentProps(props RootProps) components.BodyProps {
 
 	if props.Description != "" {
 		out.Meta["description"] = props.Description
+	}
+
+	if props.RSS != "" {
+		out.Alternates = append(out.Alternates, components.Alternate{
+			URL:   props.RSS,
+			Type:  "application/rss+xml",
+			Title: "RSS",
+		})
+	}
+
+	if props.Atom != "" {
+		out.Alternates = append(out.Alternates, components.Alternate{
+			URL:   props.Atom,
+			Type:  "application/atom+xml",
+			Title: "Atom",
+		})
 	}
 
 	out.SocialCard = &components.SocialCard{

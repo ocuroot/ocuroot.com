@@ -108,6 +108,9 @@ templ BlogListPage(posts []*BlogPost) {
 		Canonical:   Canonical("blog"),
 		Description: "The Ocuroot blog, following development of a flexible, YAML-free CI/CD solution.",
 		Type:        "website",
+
+		RSS:         Canonical("blog", "rss.xml"),
+		Atom:        Canonical("blog", "atom.xml"),
 	}) {
 		if len(posts) > 0 {
 			<!-- Hero Post Section -->
