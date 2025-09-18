@@ -1,8 +1,8 @@
 package site
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 // Author represents blog post author information for templates
@@ -34,17 +34,17 @@ type BlogPost struct {
 // Blog post template
 templ BlogPostPage(post *BlogPost) {
 	@root(RootProps{
-		Title: fmt.Sprintf("Blog | %s", post.Title),
-		Path: "/blog",
+		Title:     fmt.Sprintf("Blog | %s", post.Title),
+		Path:      "/blog",
 		Canonical: Canonical("blog", post.Slug),
-		
+	
 		Description: post.Excerpt,
-		Image: post.CoverImage.Src,
-		ImageAlt: post.CoverImage.Alt,
-		Type: "article",
+		Image:       post.CoverImage.Src,
+		ImageAlt:    post.CoverImage.Alt,
+		Type:        "article",
 	}) {
 		<!-- Blog Post Header -->
-		<section class="blog-heading">			
+		<section class="blog-heading">
 			<div class="blog-heading-text">
 				<h1 class="blog-heading-title">
 					{ post.Title }
@@ -63,7 +63,6 @@ templ BlogPostPage(post *BlogPost) {
 				</div>
 			</div>
 		</section>
-
 		<!-- Cover Image Section -->
 		if post.CoverImage.Src != "" {
 			<section class="blog-cover-section">
@@ -83,15 +82,18 @@ templ BlogPostPage(post *BlogPost) {
 				</div>
 			</section>
 		}
-
 		<hr class="section-divider"/>
-		
 		<!-- Blog Content -->
 		<section class="features-section">
 			<div class="content-container">
 				<article class="blog-content markdown-content">
 					@templ.Raw(post.Content)
 				</article>
+			</div>
+		</section>
+		<section class="features-section">
+			<div class="content-container">
+				@NewsletterSignup()
 			</div>
 		</section>
 		@MermaidScript()
@@ -101,11 +103,11 @@ templ BlogPostPage(post *BlogPost) {
 // Blog listing template with hero post design
 templ BlogListPage(posts []*BlogPost) {
 	@root(RootProps{
-		Title: "Blog",
-		Path: "/blog",
-		Canonical: Canonical("blog"),
+		Title:       "Blog",
+		Path:        "/blog",
+		Canonical:   Canonical("blog"),
 		Description: "The Ocuroot blog, following development of a flexible, YAML-free CI/CD solution.",
-		Type: "website",
+		Type:        "website",
 	}) {
 		if len(posts) > 0 {
 			<!-- Hero Post Section -->
@@ -113,7 +115,6 @@ templ BlogListPage(posts []*BlogPost) {
 				<div class="hero-background">
 					<div class="hero-overlay"></div>
 				</div>
-				
 				<div class="hero-content">
 					<div class="hero-blog-layout">
 						if posts[0].CoverImage.Src != "" {
@@ -147,9 +148,17 @@ templ BlogListPage(posts []*BlogPost) {
 					</div>
 				</div>
 			</section>
-
+			
 			<hr class="section-divider"/>
 			
+			<section class="features-section">
+				<div class="content-container">
+					@NewsletterSignup()
+				</div>
+			</section>
+			
+			<hr class="section-divider"/>
+
 			if len(posts) > 1 {
 				<!-- More Stories Section -->
 				<section class="features-section">
@@ -193,7 +202,6 @@ templ BlogListPage(posts []*BlogPost) {
 				<div class="hero-background">
 					<div class="hero-overlay"></div>
 				</div>
-				
 				<div class="hero-content">
 					<div class="hero-text">
 						<h1 class="hero-title">Blog</h1>

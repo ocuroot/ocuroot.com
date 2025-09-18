@@ -28,12 +28,16 @@ var codeCSS []byte
 //go:embed components/code/code.js
 var codeJS []byte
 
+//go:embed newsletter.css
+var newsletterCSS []byte
+
 func init() {
 	css.Default().Add(styleCSS)
 	css.Default().Add(mermaidCSS)
 	css.Default().Add(syntaxHighlightingCSS)
 	css.Default().Add(gitcardCSS)
 	css.Default().Add(codeCSS)
+	css.Default().Add(newsletterCSS)
 
 	js.Default().Add(gitcardJS)
 	js.Default().Add(codeJS)
