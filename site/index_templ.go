@@ -90,7 +90,7 @@ func Index() templ.Component {
 					}()
 				}
 				ctx = templ.InitializeContext(ctx)
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Centralized, YAML-based CI solutions two big problems. You need to learn their particular YAML DSL to even do simple branching logic. And you have to push to the remote to test every, single, change.</p><p>Ocuroot configuration is defined with Python-like Starlark syntax. So if you need an if statement or a for loop, you can just write one. Plus you can run your logic locally for super-tight feedback loops.</p><p>There&apos;s even a REPL!</p>")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<p>Centralized, YAML-based CI solutions suffer from two big problems. You need to learn their particular YAML DSL to even do simple branching logic. And you have to push to the remote to test every, single, change.</p><p>Ocuroot configuration is defined with Python-like Starlark syntax. So if you need an if statement or a for loop, you can just write one. Plus you can run your logic locally for super-tight feedback loops.</p><p>There&apos;s even a REPL!</p>")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
