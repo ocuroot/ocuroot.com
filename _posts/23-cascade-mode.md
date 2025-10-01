@@ -7,12 +7,12 @@ coverImage:
   alt: "A small waterfall in a rocky part of a woodland. The waterfall has multiple levels."
   credit: "Photo by Kennst du schon die Umkreisel App?"
   creditURL: "https://www.pexels.com/photo/waterfall-1080421/"
-date: "2025-09-17T11:00:00-04:00"
+date: "2025-10-02T10:00:00-04:00"
 author:
   name: Tom Elliott
   picture: "/assets/blog/authors/telliott.jpeg"
 ogImage:
-  url: "/assets/blog/v0.3.14-release-feedback-requested/cover.jpg"
+  url: "/assets/blog/cascade-mode/cover.jpg"
 ---
 
 In the [announcement for v0.3.14](/blog/v0.3.14-release-feedback-requested/), I mentioned that integration with CI
