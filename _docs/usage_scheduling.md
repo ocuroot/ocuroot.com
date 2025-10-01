@@ -23,6 +23,11 @@ ocuroot release new path/to/release.ocu.star
 
 This process is outlined in more detail on the [Releases](/docs/usage/releases) page.
 
+As a result of [dependencies](usage/dependencies), a new release may cause additional work, such as
+a new release of a backend service or ML model requiring upstream services to be redeployed to be
+aware of the change. Providing the `--cascade` flag to `ocuroot release new` will result in this
+additional work being executed automatically.
+
 ## Requesting Work
 
 When a Release is created, it won't always be able to run to completion. Intent changes must
@@ -30,46 +35,10 @@ also be handled outside of a typical Release. This is where we need a mechanism 
 any outstanding work.
 
 ```bash
-ocuroot work any
+ocuroot work cascade
 ```
 
 This command will inspect the state and intent stores, and identify any outstanding work that
-can be executed on the current commit. If any work is found, it will be executed.
+can be executed across all source repos and commits. This work will then be executed.
 
-Any outstanding work for other commits may then be "triggered" as detailed in the next section.
-
-## Triggers
-
-A "trigger" is an action taken by Ocuroot to schedule work against a particular commit in a repo.
-
-The command:
-
-`ocuroot work trigger`
-
-Will inspect the state and intent stores, and identify any outstanding work, determining which commits
-have work to be done. It will then use a "trigger function" to schedule that work.
-
-A trigger function is defined in the `repo.ocu.star` file, and is called for each commit that has outstanding work.
-
-```python
-def do_trigger(commit):
-    print("triggering for commit:" + commit)
-    # Schedule a job to run the `ocuroot work any` command for this commit.
-
-trigger(do_trigger)
-```
-
-In this case, the `do_trigger` function will be called once for each commit with outstanding work.
-
-This would typically then schedule a job to run on this commit and call the `ocuroot work any` command.
-
-The `ocuroot work any` command itself will also issue trigger requests as needed after it runs, to ensure
-that all outstanding work can eventually be completed.
-
-If you don't necessarily have access to both the intent and state stores, you can also call:
-
-```bash
-ocuroot work trigger --intent
-```
-
-Which will trigger work against all commits with current deployments.
+A summary of the work to be executed can be provided with the `--dryrun` flag.
