@@ -7,7 +7,7 @@ coverImage:
   alt: "A pair of brown work boots on a mossy tree trunk"
   credit: "Photo by Lum3n"
   creditURL: "https://www.pexels.com/photo/brown-work-boots-167706/"
-date: "2025-11-13T11:00:00-04:00"
+date: "2025-11-27T11:00:00-04:00"
 author:
   name: Tom Elliott
   picture: "/assets/blog/authors/telliott.jpeg"
