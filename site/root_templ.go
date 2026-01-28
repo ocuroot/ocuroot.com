@@ -115,7 +115,7 @@ func root(props RootProps) templ.Component {
 				LogoURL:   "/static/logo.svg",
 				Items: []navbar.NavItem{
 					navbar.NavLink{
-						Name:   "Product",
+						Name:   "Home",
 						URL:    "/",
 						Active: props.Path == "/",
 					},
@@ -123,14 +123,6 @@ func root(props RootProps) templ.Component {
 						Name:   "Blog",
 						URL:    "/blog",
 						Active: props.Path == "/blog/",
-					},
-					navbar.NavLink{
-						Name:   "Docs",
-						URL:    "/docs",
-						Active: props.Path == "/docs/",
-					},
-					navbar.NavComponent{
-						Component: SocialButtons(),
 					},
 				},
 				ShowThemeToggle: true,
